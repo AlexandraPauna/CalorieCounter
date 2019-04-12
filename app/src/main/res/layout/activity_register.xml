@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="16dp"
     android:paddingStart="16dp"
+    android:paddingTop="16dp"
     android:paddingEnd="16dp"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/tv_info"
@@ -17,13 +17,14 @@
         app:layout_constraintBottom_toTopOf="@id/tv_gender"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <TextView
         android:id="@+id/tv_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:text="@string/tv_gender"
+        android:text="@string/tv_gender"
         app:layout_constraintBottom_toTopOf="@id/radio_female"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -107,9 +108,9 @@
 
     <TextView
         android:id="@+id/tv_weight"
-        android:text="@string/tv_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/tv_weight"
         app:layout_constraintBottom_toTopOf="@id/til_weight"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_goal_weight"
@@ -117,9 +118,9 @@
 
     <TextView
         android:id="@+id/tv_goal_weight"
-        android:text="@string/tv_goal_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/tv_goal_weight"
         app:layout_constraintBottom_toTopOf="@id/til_goal_weight"
         app:layout_constraintLeft_toRightOf="@id/tv_weight"
         app:layout_constraintRight_toRightOf="parent"
@@ -159,13 +160,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_next"
         android:text="@string/btn_next"
-        app:layout_constraintTop_toBottomOf="@id/til_weight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_weight" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

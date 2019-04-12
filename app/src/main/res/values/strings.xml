@@ -13,4 +13,12 @@
     <string name="hint_weight">70</string>
     <string name="hint_goal_weight">70</string>
     <string name="btn_next">Next</string>
+    <string name="date"></string>
+
+    <string name="btn_meals">Meals</string>
+    <string name="btn_activities">Activities</string>
+    <string name="btn_update">Update</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
