@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info"
+        app:layout_constraintBottom_toTopOf="@id/tv_gender"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        app:layout_constraintBottom_toTopOf="@id/radio_female"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info" />
+
+
+    <RadioButton
+        android:id="@+id/radio_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female"
+        app:layout_constraintBottom_toTopOf="@id/tv_birthday"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/radio_male"
+        app:layout_constraintTop_toBottomOf="@id/tv_gender"
+
+        />
+
+    <RadioButton
+        android:id="@+id/radio_male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        app:layout_constraintBottom_toTopOf="@id/tv_birthday"
+        app:layout_constraintLeft_toRightOf="@id/radio_female"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_gender" />
+
+    <TextView
+        android:id="@+id/tv_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_birthday"
+        app:layout_constraintBottom_toTopOf="@id/til_birthday"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_height"
+        app:layout_constraintTop_toBottomOf="@id/radio_female" />
+
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_height"
+        app:layout_constraintBottom_toTopOf="@id/til_birthday"
+        app:layout_constraintLeft_toRightOf="@id/tv_birthday"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_female" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_birthday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_birthday"
+        app:layout_constraintBottom_toTopOf="@id/tv_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/til_height"
+        app:layout_constraintTop_toBottomOf="@id/tv_birthday">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_height"
+        app:layout_constraintBottom_toTopOf="@id/tv_goal_weight"
+        app:layout_constraintLeft_toRightOf="@id/til_birthday"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_height">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_weight"
+        android:text="@string/tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/til_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_goal_weight"
+        app:layout_constraintTop_toBottomOf="@id/til_birthday" />
+
+    <TextView
+        android:id="@+id/tv_goal_weight"
+        android:text="@string/tv_goal_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/til_goal_weight"
+        app:layout_constraintLeft_toRightOf="@id/tv_weight"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_height" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_weight"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/til_goal_weight"
+        app:layout_constraintTop_toBottomOf="@id/tv_weight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_weight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_goal_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_goal_weight"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        app:layout_constraintLeft_toRightOf="@id/til_weight"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_goal_weight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_goal_weight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_next"
+        android:text="@string/btn_next"
+        app:layout_constraintTop_toBottomOf="@id/til_weight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

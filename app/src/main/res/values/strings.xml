@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Calories Counter</string>
+    <string name="info">Before you cotinue, we need some informations:</string>
+    <string name="tv_birthday">Birthday</string>
+    <string name="tv_height">Height</string>
+    <string name="hint_birthday">dd/mm/yyyy</string>
+    <string name="hint_height">170</string>
+    <string name="tv_weight">Weight</string>
+    <string name="tv_goal_weight">Goal Weight</string>
+    <string name="hint_weight">70</string>
+    <string name="hint_goal_weight">70</string>
+    <string name="btn_next">Next</string>
+</resources>
