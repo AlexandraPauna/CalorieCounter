@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Calories Counter</string>
     <string name="info">Before you cotinue, we need some informations:</string>
+    <string name="tv_gender">Gender:</string>
+    <string name="rb_female">Female:</string>
+    <string name="rb_male">Male:</string>
     <string name="tv_birthday">Birthday</string>
     <string name="tv_height">Height</string>
     <string name="hint_birthday">dd/mm/yyyy</string>
