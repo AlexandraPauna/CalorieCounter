@@ -19,6 +19,9 @@
     <string name="btn_activities">Activities</string>
     <string name="btn_update">Update</string>
 
+    <string name="tv_meals">Meals</string>
+    <string name="btn_add_meal">Add Meal</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
