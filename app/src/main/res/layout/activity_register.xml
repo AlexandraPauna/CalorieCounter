@@ -37,11 +37,11 @@
         android:layout_height="wrap_content"
         android:text="@string/rb_female"
         app:layout_constraintBottom_toTopOf="@id/tv_birthday"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/radio_male"
-        app:layout_constraintTop_toBottomOf="@id/tv_gender"
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_gender" />
 
     <RadioButton
         android:id="@+id/radio_male"
