@@ -5,27 +5,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-interface OnActivityFragmentCommunication {
-    void onAddFragment(String tag);
-    void onReplaceFragment(String tag);
-    void onRemoveFragment(String tag);
-}
 
-public class Welcome_Activity extends AppCompatActivity implements OnActivityFragmentCommunication {
-
-    private static final String FRAGMENT_TAG = "FRAGMENT_TAG";
-
-    static Welcome_Activity welcomeActivity;
-    public static  Welcome_Activity getInstance(){
-        return welcomeActivity;
-    }
+public class Main_Activity extends AppCompatActivity implements OnActivityFragmentCommunication {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome_);
+        setContentView(R.layout.activity_main);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerWelcome,new Login_Fragment());
+        fragmentTransaction.replace(R.id.fragmentContainerMain,new Home_Fragment());
         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fragmentTransaction.commit();
     }
@@ -37,16 +25,16 @@ public class Welcome_Activity extends AppCompatActivity implements OnActivityFra
 
     @Override
     public void onReplaceFragment(String tag) {
-        if(tag.equals("Login")) { //replace Login_Fragment with Register_Fragment
+        if(tag.equals("DisplayMeals")) { //replace Home_Fragment with Meals_Fragment
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainerWelcome,new Register_Fragment());
+            fragmentTransaction.replace(R.id.fragmentContainerMain,new Meals_Fragment());
             fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
             fragmentTransaction.commit();
         }
 
-        if(tag.equals("Register")) { //replace Register_Fragment with Login_Fragment
+        if(tag.equals("DisplayActivities")) { //replace Home_Fragment with Meals_Fragment
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainerWelcome,new Login_Fragment());
+            fragmentTransaction.replace(R.id.fragmentContainerMain,new Activities_Fragment());
             fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
             fragmentTransaction.commit();
         }

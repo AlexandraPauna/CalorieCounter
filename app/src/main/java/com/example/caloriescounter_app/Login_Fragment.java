@@ -2,6 +2,7 @@ package com.example.caloriescounter_app;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -34,6 +35,15 @@ public class Login_Fragment extends Fragment {
             public void onClick(View v) {
                 onActivityFragmentCommunication.onReplaceFragment("Login");
 
+            }
+        });
+
+        Button MainActivityBtn  = (Button) view.findViewById(R.id.btn_login);
+        MainActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Main_Activity.class);
+                startActivity(intent);
             }
         });
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBack"
     android:paddingStart="16dp"
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
@@ -14,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Today"
+        android:textColor="@color/textColor"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/tv_cal_left"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -25,6 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cal left"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/tv_cal_intake"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -35,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Intake"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@id/btn_meals"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -46,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Burned"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@id/btn_meals"
         app:layout_constraintLeft_toRightOf="@id/tv_cal_intake"
         app:layout_constraintRight_toRightOf="parent"
@@ -53,9 +60,11 @@
 
     <Button
         android:id="@+id/btn_meals"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/buttonColorPink"
         android:text="@string/btn_meals"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@id/btn_activities"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -63,9 +72,11 @@
 
     <Button
         android:id="@+id/btn_activities"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/buttonColorPink"
         android:text="@string/btn_activities"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@id/tv_weight"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -74,13 +85,16 @@
 
     <TextView
         android:id="@+id/tv_weight"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_weight"
-        app:layout_constraintBottom_toTopOf="@id/btn_activities"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_display_weight"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_display_weight" />
+        app:layout_constraintTop_toBottomOf="@id/btn_activities" />
 
 
     <TextView
@@ -88,21 +102,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="55kg"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btn_update_weight"
         app:layout_constraintTop_toBottomOf="@id/tv_weight" />
 
-            <Button
-                android:id="@+id/btn_update_weight"
-                android:text="@string/btn_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_weight"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/tv_display_weight"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+        android:id="@+id/btn_update_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/buttonColor"
+        android:text="@string/btn_update"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tv_display_weight"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_weight" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
