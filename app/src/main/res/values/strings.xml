@@ -31,6 +31,19 @@
     <string name="tv_activities">Activities</string>
     <string name="btn_add_activity">Add Activity</string>
 
+    <string name="hint_name">Name</string>
+    <string name="btn_add">Add</string>
+
+    <string name="tv_add_meal">Add Meal</string>
+    <string name="hint_brand">Brand</string>
+    <string name="hint_serving_size">Serving Size(1 Cup, 1 Slice, etc.)</string>
+    <string name="hint_calories">Calories</string>
+    <string name="hint_protein">Protein (g)</string>
+    <string name="hint_fat">Fat (g)</string>
+    <string name="hint_carbs">Carbs (g)</string>
+
+    <string name="hint_duration">Duration</string>
+    <string name="hint_calories_burned">Calories Burned</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

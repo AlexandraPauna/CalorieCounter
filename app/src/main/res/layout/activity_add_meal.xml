@@ -4,6 +4,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBack"
     tools:context=".AddMeal_Activity">
+
+    <TextView
+        android:id="@+id/tv_add_meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_add_meal"
+        android:textColor="@color/textColor"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/til_meal_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_meal_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_name"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/til_brand"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_meal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_meal_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_brand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_brand"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/til_serving_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_meal_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_brand"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_serving_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_serving_size"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/til_calories_burned"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_brand">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_serving_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_calories_burned"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_calories_burned"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/til_protein"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_serving_size">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_calories_burned"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_protein"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_protein"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/til_fat"
+        app:layout_constraintTop_toBottomOf="@id/til_calories_burned">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_protein"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_fat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_fat"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintLeft_toRightOf="@id/til_protein"
+        app:layout_constraintRight_toLeftOf="@id/til_carbs"
+        app:layout_constraintTop_toBottomOf="@id/til_calories_burned">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_carbs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_carbs"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintLeft_toRightOf="@id/til_fat"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_calories_burned">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_carbs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/buttonColor"
+        android:text="@string/btn_add"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_protein" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
