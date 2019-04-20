@@ -8,7 +8,7 @@
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
     android:paddingBottom="32dp"
-    tools:context=".ActivitiesFragment">
+    tools:context=".Activities_Fragment">
 
     <TextView
         android:id="@+id/tv_activities"

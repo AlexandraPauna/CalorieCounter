@@ -1,4 +1,10 @@
 <resources>
+    <string name="username">UserName</string>
+    <string name="password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_bk_login">Back to Login</string>
+
     <string name="app_name">Calories Counter</string>
     <string name="info">Before you cotinue, we need some informations:</string>
     <string name="tv_gender">Gender:</string>
@@ -12,7 +18,7 @@
     <string name="tv_goal_weight">Goal Weight</string>
     <string name="hint_weight">70</string>
     <string name="hint_goal_weight">70</string>
-    <string name="btn_next">Next</string>
+    <string name="btn_sign_up">Sign Up</string>
     <string name="date"></string>
 
     <string name="btn_meals">Meals</string>
@@ -27,4 +33,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
 </resources>
