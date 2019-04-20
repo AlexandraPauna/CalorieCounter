@@ -13,8 +13,6 @@ interface OnActivityFragmentCommunication {
 
 public class Welcome_Activity extends AppCompatActivity implements OnActivityFragmentCommunication {
 
-    private static final String FRAGMENT_TAG = "FRAGMENT_TAG";
-
     static Welcome_Activity welcomeActivity;
     public static  Welcome_Activity getInstance(){
         return welcomeActivity;
@@ -56,4 +54,5 @@ public class Welcome_Activity extends AppCompatActivity implements OnActivityFra
     public void onRemoveFragment(String tag) {
 
     }
+
 }

@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_calories_burned"
         android:textColorHint="@color/colorHint"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintBottom_toTopOf="@id/btn_add_a"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_duration">
@@ -74,7 +74,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_add_a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/buttonColor"
