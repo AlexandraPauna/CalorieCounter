@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_serving_size"
         android:textColorHint="@color/colorHint"
-        app:layout_constraintBottom_toTopOf="@id/til_calories_burned"
+        app:layout_constraintBottom_toTopOf="@id/til_calories"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_brand">
@@ -74,10 +74,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_calories_burned"
+        android:id="@+id/til_calories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_calories_burned"
+        android:hint="@string/hint_calories"
         android:textColorHint="@color/colorHint"
         app:layout_constraintBottom_toTopOf="@id/til_protein"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@id/til_serving_size">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_calories_burned"
+            android:id="@+id/et_calories"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
@@ -100,7 +100,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_add"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/til_fat"
-        app:layout_constraintTop_toBottomOf="@id/til_calories_burned">
+        app:layout_constraintTop_toBottomOf="@id/til_calories">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_protein"
@@ -118,7 +118,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_add"
         app:layout_constraintLeft_toRightOf="@id/til_protein"
         app:layout_constraintRight_toLeftOf="@id/til_carbs"
-        app:layout_constraintTop_toBottomOf="@id/til_calories_burned">
+        app:layout_constraintTop_toBottomOf="@id/til_calories">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_fat"
@@ -136,7 +136,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_add"
         app:layout_constraintLeft_toRightOf="@id/til_fat"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_calories_burned">
+        app:layout_constraintTop_toBottomOf="@id/til_calories">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_carbs"
