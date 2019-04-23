@@ -10,9 +10,9 @@
     <string name="tv_gender">Gender:</string>
     <string name="rb_female">Female:</string>
     <string name="rb_male">Male:</string>
-    <string name="tv_birthday">Birthday</string>
+    <string name="tv_birthday">Age</string>
     <string name="tv_height">Height</string>
-    <string name="hint_birthday">yyyy-mm-dd</string>
+    <string name="hint_birthday">21</string>
     <string name="hint_height">170</string>
     <string name="tv_weight">Weight</string>
     <string name="tv_goal_weight">Goal Weight</string>

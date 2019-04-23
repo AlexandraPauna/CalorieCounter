@@ -106,7 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:inputType="date"
         android:text="@string/tv_birthday"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@id/til_birthday"
@@ -139,6 +138,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_birthday"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
