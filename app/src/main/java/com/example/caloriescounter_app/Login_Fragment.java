@@ -57,9 +57,9 @@ public class Login_Fragment extends Fragment {
                     User user = userRep.getUser(userName.toString(), password.toString());
                     if (user != null) {
                         Toast.makeText(getContext(), "User found!", Toast.LENGTH_SHORT).show();
-                        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                        SharedPreferences sharedPref = getActivity().getSharedPreferences("com.example.caloriescounter_app", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putInt("userID", user.uid);
+                        editor.putInt("com.example.caloriescounter_app.userId", user.uid);
                         editor.apply();
                         Intent intent = new Intent(getActivity(), Main_Activity.class);
                         startActivity(intent);

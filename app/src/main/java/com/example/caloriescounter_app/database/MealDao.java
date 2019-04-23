@@ -17,7 +17,7 @@ public interface MealDao {
     List<Meal> loadAllByIds(int[] mealsIds);
 
     @Query("SELECT * FROM meal WHERE user_id = :userId AND date = :mealDate")
-    List<Meal> loadAllForUserByDate(String userId, Date mealDate);
+    List<Meal> loadAllForUserByDate(int userId, Date mealDate);
 
     @Insert
     void insertAll(Meal...meals);
