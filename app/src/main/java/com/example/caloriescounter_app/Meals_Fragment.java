@@ -62,18 +62,13 @@ public class Meals_Fragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        //meals = new ArrayList<Meal>();
+
         SharedPreferences prefs = getActivity().getSharedPreferences(
                 "com.example.caloriescounter_app", Context.MODE_PRIVATE);
         int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
 
         meals = (ArrayList<Meal>) new MealRepository(getContext()).getMeals(userId, Calendar.getInstance().getTime());
         //meals.addAll(new ApplicationController().getAppDatabase().userDao().getAll());
-
-       /* users.add(new User("Ion", "Gheorghe"));
-        users.add(new User("Maria", "Georgescu"));
-        users.add(new User("Liliana", "Popescu"));
-        users.add(new User("Mihai", "Popa"));*/
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rec_view_meals);
