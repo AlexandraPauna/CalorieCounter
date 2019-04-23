@@ -14,7 +14,6 @@
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Today"
         android:textColor="@color/textColor"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/tv_cal_left"
@@ -77,11 +76,23 @@
         android:background="@color/buttonColorPink"
         android:text="@string/btn_activities"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/tv_weight"
+        app:layout_constraintBottom_toTopOf="@id/alarmToggle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_meals" />
 
+    <ToggleButton
+        android:id="@+id/alarmToggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/buttonColorPink"
+        android:textOff="Alarm off"
+        android:textOn="Alarm on"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@id/tv_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_activities" />
 
     <TextView
         android:id="@+id/tv_weight"
@@ -101,7 +112,6 @@
         android:id="@+id/tv_display_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="55kg"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"

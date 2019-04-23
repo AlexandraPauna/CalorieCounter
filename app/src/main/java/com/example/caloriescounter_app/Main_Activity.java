@@ -1,17 +1,30 @@
 package com.example.caloriescounter_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlarmManager;
 import android.app.FragmentManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+import android.widget.CompoundButton;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 
 public class Main_Activity extends AppCompatActivity implements OnActivityFragmentCommunication {
 
     private static final String FRAGMENT_TAG = "FRAGMENT_TAG";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +36,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
         String backStateName = Home_Fragment.class.getName();
         fragmentTransaction.addToBackStack(backStateName);
         fragmentTransaction.commit();
+
     }
 
     @Override
@@ -80,4 +94,6 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
             }
         }
     }
+
+
 }
