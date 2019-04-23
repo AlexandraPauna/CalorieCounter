@@ -3,6 +3,7 @@ package com.example.caloriescounter_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -56,14 +57,18 @@ public class Login_Fragment extends Fragment {
                     User user = userRep.getUser(userName.toString(), password.toString());
                     if (user != null) {
                         Toast.makeText(getContext(), "User found!", Toast.LENGTH_SHORT).show();
+                        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putInt("userID", user.uid);
+                        editor.apply();
+                        Intent intent = new Intent(getActivity(), Main_Activity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     // nasol moment
                 }
-                Intent intent = new Intent(getActivity(), Main_Activity.class);
-                startActivity(intent);
             }
         });
 
