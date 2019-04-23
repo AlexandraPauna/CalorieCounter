@@ -1,4 +1,5 @@
 package com.example.caloriescounter_app;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,13 +52,13 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView carbsTextView = ((ViewHolder)viewHolder).carbsText;
 
         nameTextView.setText(items.get(position).name);
-        dateTextView.setText(items.get(position).date.toString());
+        dateTextView.setText(items.get(position).date);
         brandTextView.setText(items.get(position).brand);
         servingSizeTextView.setText(items.get(position).servingSize);
-        caloriesTextView.setText(items.get(position).calories);
-        proteinTextView.setText(items.get(position).protein);
-        fatTextView.setText(items.get(position).fat);
-        carbsTextView.setText(items.get(position).carbs);
+        caloriesTextView.setText(((Integer)items.get(position).calories).toString());
+        proteinTextView.setText(((Integer)items.get(position).protein).toString());
+        fatTextView.setText(((Integer)items.get(position).fat).toString());
+        carbsTextView.setText(((Integer)items.get(position).carbs).toString());
 
     }
 

@@ -15,7 +15,7 @@ public class Meal {
     public String name;
 
     @ColumnInfo(name = "date")
-    public Date date;
+    public String date;
 
     @ColumnInfo(name = "user_id")
     public int userId;
@@ -38,7 +38,7 @@ public class Meal {
     @ColumnInfo(name = "carbs")
     public int carbs;
 
-    public Meal(String name, Date date, int userId, String brand, String servingSize, int calories, int protein, int fat, int carbs){
+    public Meal(String name, String date, int userId, String brand, String servingSize, int calories, int protein, int fat, int carbs){
         this.name = name;
         this.date = date;
         this.userId = userId;

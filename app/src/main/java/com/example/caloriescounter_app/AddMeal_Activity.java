@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.Meal;
 
 import java.util.Calendar;
@@ -40,7 +41,7 @@ public class AddMeal_Activity extends AppCompatActivity {
                 SharedPreferences prefs = getSharedPreferences(
                         "com.example.caloriescounter_app", Context.MODE_PRIVATE);
                 int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
-                Meal meal = new Meal(nameText.getText().toString(), Calendar.getInstance().getTime(),
+                Meal meal = new Meal(nameText.getText().toString(), Converters.getCurrentDate(),
                         userId, brandText.getText().toString(), servingSizeText.getText().toString(),
                         Integer.parseInt(caloriesText.getText().toString()), Integer.parseInt(proteinText.getText().toString()),
                         Integer.parseInt(fatText.getText().toString()), Integer.parseInt(carbsText.getText().toString()));

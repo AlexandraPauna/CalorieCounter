@@ -2,6 +2,7 @@ package com.example.caloriescounter_app.database;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.room.TypeConverter;
@@ -28,4 +29,13 @@ public class Converters {
         } else {
             return null;
         }*/
+    public static String getCurrentDate() {
+        String date = "";
+        Calendar calendarSmecher = Calendar.getInstance();
+        Integer an = calendarSmecher.get(Calendar.YEAR);
+        Integer luna = calendarSmecher.get(Calendar.MONTH) + 1;
+        Integer zi = calendarSmecher.get(Calendar.DAY_OF_MONTH);
+        date = date + zi.toString() + "-" + luna.toString() + "-" + an.toString();
+        return date;
+    }
 }

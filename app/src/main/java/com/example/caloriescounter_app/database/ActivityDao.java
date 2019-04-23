@@ -17,7 +17,7 @@ public interface ActivityDao {
     List<Activity> loadAllByIds(int[]activitiesIds);
 
     @Query("SELECT * FROM activity WHERE user_id = :userId AND date = :date")
-    List<Activity> loadAllForUserByDate(String userId, Date date);
+    List<Activity> loadAllForUserByDate(int userId, String date);
 
     @Insert
     void insertAll(Activity...activities);

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.Meal;
 
 import java.util.ArrayList;
@@ -67,7 +68,8 @@ public class Meals_Fragment extends Fragment {
                 "com.example.caloriescounter_app", Context.MODE_PRIVATE);
         int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
 
-        meals = (ArrayList<Meal>) new MealRepository(getContext()).getMeals(userId, Calendar.getInstance().getTime());
+        meals = (ArrayList<Meal>) new MealRepository(getContext()).getMeals(userId, Converters.getCurrentDate());
+
         //meals.addAll(new ApplicationController().getAppDatabase().userDao().getAll());
 
         Context context = view.getContext();

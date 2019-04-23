@@ -16,10 +16,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -33,7 +35,6 @@ public class Register_Fragment extends Fragment {
     public Register_Fragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,63 +52,103 @@ public class Register_Fragment extends Fragment {
 
         final EditText userName = view.findViewById(R.id.et_username);
         final EditText password = view.findViewById(R.id.et_password);
-        String gender;
-        RadioButton radioBtnFemale = (RadioButton) view.findViewById(R.id.radio_female);
-        RadioButton radioBtnMale = (RadioButton) view.findViewById(R.id.radio_male);
-        if(radioBtnFemale.isChecked()){
-            gender = "female";
-        }
-        else if(radioBtnMale.isChecked()){
-            gender = "male";
-        } else {
-            gender = null;
-        }
 
+
+        String gender = null;
+        final RadioButton radioBtnFemale = (RadioButton) view.findViewById(R.id.radio_female);
+        final RadioButton radioBtnMale = (RadioButton) view.findViewById(R.id.radio_male);
         final String userGender = gender;
-        /*final RadioGroup radioGroupGender = view.findViewById(R.id.rg_gender);
-        int selectedId = radioGroupGender.getCheckedRadioButtonId();
-        final RadioButton selectedRadioButton = (RadioButton)view.findViewById(R.id.selectedId);
-        selectedRadioButton.getText().toString()*/
 
-        final EditText birthday = view.findViewById(R.id.et_birthday);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-        Date date = null;
-        try {
-            date = format.parse(birthday.getText().toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        final Date birthdayDate = date;
+        final EditText age = view.findViewById(R.id.et_birthday);
         final EditText height = view.findViewById(R.id.et_height);
         final EditText weight = view.findViewById(R.id.et_weight);
         final EditText goalWeight = view.findViewById(R.id.et_goal_weight);
+
+        /*int bmr = 0;
+        if (radioBtnFemale.isChecked()) {
+            gender = "female";
+            bmr = (int) (655 + 9 * Float.parseFloat(weight.getText().toString()) +
+                    1 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+        } else if (radioBtnMale.isChecked()) {
+            bmr = (int) (66 + 13 * Float.parseFloat(weight.getText().toString()) +
+                    5 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+            gender = "male";
+        }
+
+        final int bmrValue = bmr;*/
 
         Button addUser = (Button) view.findViewById(R.id.btn_sign_up);
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(userName.getText().toString(), password.getText().toString(),
-                        userGender, birthdayDate,
-                        Integer.parseInt(height.getText().toString()),
-                        Float.parseFloat(weight.getText().toString()),
-                        Float.parseFloat(goalWeight.getText().toString()) );
 
-                new UserRepository(getContext()).insertTask(user, new OnUserRepositoryActionListener() {
-                    @Override
-                    public void actionSucces() {
-                        Toast.makeText(getContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
+                String genulet = null;
+                int bmrulet = 0;
+                if (radioBtnFemale.isChecked()) {
+                    genulet = "female";
+                    bmrulet = (int) (655 + 9 * Float.parseFloat(weight.getText().toString()) +
+                            1 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+                } else if (radioBtnMale.isChecked()) {
+                    bmrulet = (int) (66 + 13 * Float.parseFloat(weight.getText().toString()) +
+                            5 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+                    genulet = "male";
 
-                        Intent intent = new Intent(getActivity(), Main_Activity.class);
-                        startActivity(intent);
-                    }
+                }
+                if (userName.getText().toString().isEmpty()) {
+                    userName.setError("Field required");
+                    userName.requestFocus();
+                } else if (password.getText().toString().isEmpty()) {
+                    password.setError("Field required");
+                    password.requestFocus();
 
-                    @Override
-                    public void actionFailed() {
-                        Toast.makeText(getContext(), "User could not be aded!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                } else if (age.getText().toString().isEmpty()) {
+                    age.setError("Field required");
+                    age.requestFocus();
+
+                } else if (height.getText().toString().isEmpty()) {
+                    height.setError("Field required");
+                    height.requestFocus();
+
+                } else if (weight.getText().toString().isEmpty()) {
+                    weight.setError("Field required");
+                    weight.requestFocus();
+
+                } else if (goalWeight.getText().toString().isEmpty()) {
+                    goalWeight.setError("Field required");
+                    goalWeight.requestFocus();
+
+                } else if (genulet == null) {
+                    radioBtnMale.setError("Selection Required");
+                    radioBtnFemale.setError("Selection Required");
+                    radioBtnFemale.requestFocus();
+                    radioBtnMale.requestFocus();
+                } else {
+                    System.out.println("Data curenta: " + Converters.getCurrentDate());
+                    User user = new User(userName.getText().toString(), password.getText().toString(),
+                            genulet, Integer.parseInt(age.getText().toString()),
+                            Integer.parseInt(height.getText().toString()),
+                            Float.parseFloat(weight.getText().toString()),
+                            Float.parseFloat(goalWeight.getText().toString()), bmrulet);
+
+                    new UserRepository(getContext()).insertTask(user, new OnUserRepositoryActionListener() {
+                        @Override
+                        public void actionSucces() {
+                            Toast.makeText(getContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getActivity(), Main_Activity.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void actionFailed() {
+                            Toast.makeText(getContext(), "User could not be aded!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
             }
         });
+
 
         return view;
     }
@@ -115,7 +156,7 @@ public class Register_Fragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnActivityFragmentCommunication){
+        if (context instanceof OnActivityFragmentCommunication) {
             onActivityFragmentCommunication = (OnActivityFragmentCommunication) context;
         }
     }

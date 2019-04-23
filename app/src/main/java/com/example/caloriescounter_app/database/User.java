@@ -21,8 +21,8 @@ public class User {
     @ColumnInfo(name = "gender")
     public String gender;
 
-    @ColumnInfo(name = "birthday")
-    public Date birthday;
+    @ColumnInfo(name = "age")
+    public int age;
 
     @ColumnInfo(name = "height")
     public int height;
@@ -33,14 +33,18 @@ public class User {
     @ColumnInfo(name = "goal_weight")
     public float goal_weight;
 
-    public User(String userName, String password, String gender, Date birthday, int height, float weight, float goal_weight){
+    @ColumnInfo(name = "bmr")
+    public int bmr;
+
+    public User(String userName, String password, String gender, int age, int height, float weight, float goal_weight, int bmr){
         this.userName = userName;
         this.password = password;
         this.gender = gender;
-        this.birthday = birthday;
+        this.age = age;
         this.height = height;
         this.weight = weight;
         this.goal_weight = goal_weight;
+        this.bmr = bmr;
     }
 
 }

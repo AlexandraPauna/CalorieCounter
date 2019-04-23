@@ -22,7 +22,7 @@ public class MealRepository {
         new MealInsertTask(listener).execute(meal);
     }
 
-    public List<Meal> getMeals(int userID, Date date) {
+    public List<Meal> getMeals(int userID, String date) {
         return appDatabase.mealDao().loadAllForUserByDate(userID, date);
     }
 

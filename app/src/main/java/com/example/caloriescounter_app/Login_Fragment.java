@@ -38,6 +38,7 @@ public class Login_Fragment extends Fragment {
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Ceva");
                 onActivityFragmentCommunication.onReplaceFragment("Login");
 
             }
@@ -52,9 +53,14 @@ public class Login_Fragment extends Fragment {
         MainActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Atlceva");
                 UserRepository userRep = new UserRepository(getContext());
-                try {
-                    User user = userRep.getUser(userName.toString(), password.toString());
+                System.out.println("Hellooo");
+
+                    System.out.println("Username: " + userName.getText().toString());
+                    System.out.println("Password: " + password.getText().toString());
+
+                    User user = userRep.getUser(userName.getText().toString(), password.getText().toString());
                     if (user != null) {
                         Toast.makeText(getContext(), "User found!", Toast.LENGTH_SHORT).show();
                         SharedPreferences sharedPref = getActivity().getSharedPreferences("com.example.caloriescounter_app", Context.MODE_PRIVATE);
@@ -64,11 +70,10 @@ public class Login_Fragment extends Fragment {
                         Intent intent = new Intent(getActivity(), Main_Activity.class);
                         startActivity(intent);
                     } else {
+                        System.out.println("aaaaa");
                         Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e) {
-                    // nasol moment
-                }
+
             }
         });
 
