@@ -57,11 +57,11 @@ public class Register_Fragment extends Fragment {
         if(radioBtnFemale.isChecked()){
             gender = "female";
         }
-        else
-            if(radioBtnMale.isChecked()){
-                gender = "male";
-            }
-            else gender = null;
+        else if(radioBtnMale.isChecked()){
+            gender = "male";
+        } else {
+            gender = null;
+        }
 
         final String userGender = gender;
         /*final RadioGroup radioGroupGender = view.findViewById(R.id.rg_gender);

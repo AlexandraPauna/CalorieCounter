@@ -31,4 +31,6 @@ public interface UserDao {
     @Query("UPDATE user SET weight = :newWeight WHERE uid = :userId")
     void updateUserWeight(int userId, float newWeight);
 
+    @Query("SELECT * FROM user WHERE user_name = :userName AND password = :password")
+    User getUser(String userName, String password);
 }

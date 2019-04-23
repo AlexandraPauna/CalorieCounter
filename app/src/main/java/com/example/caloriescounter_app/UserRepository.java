@@ -17,6 +17,11 @@ public class UserRepository {
         new InsertTask(listener).execute(user);
     }
 
+
+    public User getUser(String userName, String password) {
+        return appDatabase.userDao().getUser(userName, password);
+    }
+
     public User getUserByNameString (String userName){
         return appDatabase.userDao().findByUserName(userName);
     }
