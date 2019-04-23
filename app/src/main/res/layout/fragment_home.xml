@@ -106,8 +106,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_update_weight"
+        app:layout_constraintRight_toLeftOf="@id/til_new_weight"
         app:layout_constraintTop_toBottomOf="@id/tv_weight" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_new_weight"
+        app:layout_constraintTop_toBottomOf="@id/tv_weight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tv_display_weight"
+        app:layout_constraintRight_toLeftOf="@id/btn_update_weight">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Newweight"
+            android:textColor="@color/textColor"
+            android:id="@+id/et_new_weight"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_update_weight"
@@ -117,7 +133,7 @@
         android:text="@string/btn_update"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tv_display_weight"
+        app:layout_constraintLeft_toRightOf="@id/til_new_weight"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_weight" />
 

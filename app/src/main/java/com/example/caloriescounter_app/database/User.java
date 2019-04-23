@@ -47,6 +47,10 @@ public class User {
         this.bmr = bmr;
     }
 
+    public void setUid(int id) {
+        this.uid = id;
+    }
+
 }
 
 

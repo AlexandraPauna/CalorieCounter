@@ -30,6 +30,10 @@ public class UserRepository {
         return appDatabase.userDao().findByUserName(userName);
     }
 
+    public User getUserById(int id) {
+        return appDatabase.userDao().getUserById(id);
+    }
+
     /*public void deleteTask(final User user,
                            final OnUserRepositoryActionListener listener){
         new DeleteTask(listener).execute(user);

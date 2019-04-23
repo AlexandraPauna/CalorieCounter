@@ -13,7 +13,7 @@ public class UpdateTask extends AsyncTask<User, Void, Void> {
 
     @Override
     protected Void doInBackground(User... users) {
-        ApplicationController.getAppDatabase().userDao().updateTask(users[0]);
+        ApplicationController.getAppDatabase().userDao().updateUserWeight(users[0].uid, users[0].weight, users[0].bmr);
         return null;
     }
 
