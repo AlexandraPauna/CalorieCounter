@@ -67,6 +67,7 @@ public class Home_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
         SharedPreferences prefs = getActivity().getSharedPreferences(
@@ -75,12 +76,12 @@ public class Home_Fragment extends Fragment {
         TextView message = (TextView) view.findViewById(R.id.tv_date);
         message.setText("Today " + Converters.getCurrentDate());
 
-        TextView displayWeight = (TextView) view.findViewById(R.id.tv_display_weight);
-        displayWeight.setText(((Float)new UserRepository(getContext()).getWeight(userId)).toString());
+        final TextView displayWeight = (TextView) view.findViewById(R.id.tv_display_weight);
+        displayWeight.setText("Current: " + ((Float)new UserRepository(getContext()).getWeight(userId)).toString());
 
         TextView displayIntake = (TextView) view.findViewById(R.id.tv_cal_intake);
         TextView displayBurned = (TextView) view.findViewById(R.id.tv_cal_burned);
-        TextView displayBalance = (TextView) view.findViewById(R.id.tv_cal_left);
+        final TextView displayBalance = (TextView) view.findViewById(R.id.tv_cal_left);
 
         meals = (ArrayList<Meal>) new MealRepository(getContext()).getMeals(userId, Converters.getCurrentDate());
 
@@ -88,16 +89,19 @@ public class Home_Fragment extends Fragment {
         for(Meal meal: meals) {
             caloriesIntake = caloriesIntake + meal.calories;
         }
-        displayIntake.setText(((Integer) caloriesIntake).toString());
+        displayIntake.setText("Intake: " + ((Integer) caloriesIntake).toString());
+        final int caloriesIntakeC = caloriesIntake;
 
         activities = (ArrayList<Activity>) new ActivityRepository(getContext()).getActivities(userId, Converters.getCurrentDate());
         int caloriesBurned = 0;
         for(Activity activity: activities) {
             caloriesBurned = caloriesBurned + activity.caloriesBurned;
         }
+        final int caloriesBurnedC = caloriesBurned;
+
         int bmr = (int) new UserRepository(getContext()).getBmr(userId);
-        displayBurned.setText(((Integer) caloriesBurned).toString());
-        displayBalance.setText(((Integer) (bmr-caloriesIntake+caloriesBurned)).toString());
+        displayBurned.setText("Burned: " + ((Integer) caloriesBurned).toString());
+        displayBalance.setText("Calories left: " + ((Integer) (bmr-caloriesIntake+caloriesBurned)).toString());
 
         Button DisplayMealsBtn = (Button) view.findViewById(R.id.btn_meals);
         DisplayMealsBtn.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +121,10 @@ public class Home_Fragment extends Fragment {
             }
         });
 
+        String goal = ((Float)new UserRepository(getContext()).getGoalWeight(userId)).toString();
+
         final EditText weightNew = view.findViewById(R.id.et_new_weight);
+        weightNew.setHint(goal);
 
         Button updateWeight = (Button) view.findViewById(R.id.btn_update_weight);
         updateWeight.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +148,7 @@ public class Home_Fragment extends Fragment {
                         bmrulet = (int) (66 + 13 * Float.parseFloat(weightNew.getText().toString()) +
                                 5 * user.height - user.age);
                     }
+                    final int bmruletC = bmrulet;
 
                     final User newUser = new User(user.userName, user.password, user.gender, user.age, user.height, Float.parseFloat(weightNew.getText().toString()), user.goal_weight, bmrulet);
                     newUser.setUid(userId);
@@ -148,8 +156,10 @@ public class Home_Fragment extends Fragment {
                         @Override
                         public void actionSucces() {
                             Toast.makeText(getContext(), "Successfully updated", Toast.LENGTH_SHORT).show();
-
-                        }
+                            displayWeight.setText("Current: " + ((Float)new UserRepository(getContext()).getWeight(userId)).toString());
+                            int caloriesBalanceNew = bmruletC - caloriesIntakeC + caloriesBurnedC;
+                            displayBalance.setText("Calories left: " + (((Integer) caloriesBalanceNew).toString()));
+                    }
 
                         @Override
                         public void actionFailed() {

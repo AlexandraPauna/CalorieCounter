@@ -21,7 +21,7 @@ public class MealRepository {
                            final OnMealRepositoryActionListener listener){
         new MealInsertTask(listener).execute(meal);
     }
-
+    
     public List<Meal> getMeals(int userID, String date) {
         return appDatabase.mealDao().loadAllForUserByDate(userID, date);
     }

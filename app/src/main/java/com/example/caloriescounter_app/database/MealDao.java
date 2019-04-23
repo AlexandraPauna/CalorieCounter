@@ -28,4 +28,7 @@ public interface MealDao {
     @Delete
     void delete(Meal meal);
 
+    @Query("UPDATE meal SET user_id = :newUserId WHERE uid = :mealId")
+    void updateMeal(int newUserId, int mealId);
+
 }

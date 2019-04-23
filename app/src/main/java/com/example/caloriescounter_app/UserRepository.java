@@ -30,6 +30,10 @@ public class UserRepository {
         return appDatabase.userDao().getWeight(id);
     }
 
+    public float getGoalWeight(int id) {
+        return appDatabase.userDao().getGoalWeight(id);
+    }
+
     public int getBmr(int id) {
         return appDatabase.userDao().getBmr(id);
     }

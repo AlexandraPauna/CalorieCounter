@@ -125,22 +125,25 @@ public class Register_Fragment extends Fragment {
                     radioBtnMale.requestFocus();
                 } else {
                     System.out.println("Data curenta: " + Converters.getCurrentDate());
-                    User user = new User(userName.getText().toString(), password.getText().toString(),
+                    final User user = new User(userName.getText().toString(), password.getText().toString(),
                             genulet, Integer.parseInt(age.getText().toString()),
                             Integer.parseInt(height.getText().toString()),
                             Float.parseFloat(weight.getText().toString()),
                             Float.parseFloat(goalWeight.getText().toString()), bmrulet);
-                    final int userIda = user.uid;
+
                     new UserRepository(getContext()).insertTask(user, new OnUserRepositoryActionListener() {
                         @Override
                         public void actionSucces() {
                             Toast.makeText(getContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
 
+                            UserRepository userRep = new UserRepository(getContext());
+                            User userAdded = userRep.getUser(userName.getText().toString(), password.getText().toString());
                             SharedPreferences sharedPref = getActivity().getSharedPreferences("com.example.caloriescounter_app", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putInt("com.example.caloriescounter_app.userId", userIda);
+                            editor.putInt("com.example.caloriescounter_app.userId", userAdded.uid);
                             editor.apply();
                             Intent intent = new Intent(getActivity(), Main_Activity.class);
+
                             startActivity(intent);
                         }
 

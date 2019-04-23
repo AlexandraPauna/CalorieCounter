@@ -40,6 +40,9 @@ public interface UserDao {
     @Query("SELECT weight FROM user WHERE uid = :id")
     float getWeight(int id);
 
+    @Query("SELECT goal_weight FROM user WHERE uid = :id")
+    float getGoalWeight(int id);
+
     @Query("SELECT bmr FROM user WHERE uid = :id")
     int getBmr(int id);
 }

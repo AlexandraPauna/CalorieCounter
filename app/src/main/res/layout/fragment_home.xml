@@ -12,6 +12,8 @@
 
     <TextView
         android:id="@+id/tv_date"
+        android:textStyle="bold"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
@@ -85,7 +87,7 @@
         android:id="@+id/alarmToggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/buttonColorPink"
+        android:background="@color/buttonColor"
         android:textOff="Alarm off"
         android:textOn="Alarm on"
         android:textColor="@color/textColor"
@@ -113,24 +115,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_update_weight"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/til_new_weight"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_weight" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/til_new_weight"
-        app:layout_constraintTop_toBottomOf="@id/tv_weight"
+        app:layout_constraintTop_toBottomOf="@id/tv_display_weight"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tv_display_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btn_update_weight">
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Newweight"
+            android:inputType="number"
+            android:text=""
             android:textColor="@color/textColor"
             android:id="@+id/et_new_weight"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -145,7 +148,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/til_new_weight"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_weight" />
+        app:layout_constraintTop_toBottomOf="@id/tv_display_weight" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,10 +87,9 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
                 fragmentTransaction.addToBackStack(backStateName);
                 fragmentTransaction.commit();
             }
-            else{
-                //Welcome_Activity.getInstance().finish();
-                finish();
+            else {
                 //super.onBackPressed();
+                finish();
             }
         }
     }
