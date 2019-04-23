@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-
+    private final int TYPE_PINK = 1;
 
     private ArrayList<Meal> items;
     private Context context;
@@ -24,6 +23,13 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.context = context;
         this.items = items;
     }
+
+    /*@Override
+    public int getItemViewType(int position) {
+
+
+        return TYPE_PINK;
+    }*/
 
 
     @Override
@@ -43,7 +49,6 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
 
         TextView nameTextView = ((ViewHolder)viewHolder).nameTextView;
-        TextView dateTextView = ((ViewHolder)viewHolder).dateText;
         TextView brandTextView = ((ViewHolder)viewHolder).brandText;
         TextView servingSizeTextView = ((ViewHolder)viewHolder).servingSizeText;
         TextView caloriesTextView = ((ViewHolder)viewHolder).caloriesText;
@@ -52,7 +57,6 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView carbsTextView = ((ViewHolder)viewHolder).carbsText;
 
         nameTextView.setText(items.get(position).name);
-        dateTextView.setText(items.get(position).date);
         brandTextView.setText(items.get(position).brand);
         servingSizeTextView.setText(items.get(position).servingSize);
         caloriesTextView.setText(((Integer)items.get(position).calories).toString());
@@ -69,7 +73,6 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
-        public TextView dateText;
         public TextView brandText;
         public TextView servingSizeText;
         public TextView caloriesText;
@@ -81,7 +84,6 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             super(itemView);
 
             nameTextView = itemView.findViewById(R.id.meal_name);
-            dateText = itemView.findViewById(R.id.meal_date);
             brandText = itemView.findViewById(R.id.meal_brand);
             servingSizeText = itemView.findViewById(R.id.serving_size);
             caloriesText = itemView.findViewById(R.id.calories);

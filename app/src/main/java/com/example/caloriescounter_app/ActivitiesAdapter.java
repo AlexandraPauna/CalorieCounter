@@ -28,9 +28,9 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemViewType(int position) {
-        if (position % 2 == 0){
+        /*if (position % 2 == 0){
             return TYPE_GREEN;
-        }
+        }*/
 
         return TYPE_PINK;
     }
@@ -56,8 +56,8 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TextView calBurnedTextView = ((ViewHolder)viewHolder).calBurnedTextView;
 
         nameTextView.setText(items.get(position).name);
-        durationTextView.setText(items.get(position).duration);
-        calBurnedTextView.setText(items.get(position).duration);
+        durationTextView.setText(((Integer)items.get(position).duration).toString());
+        calBurnedTextView.setText(((Integer)items.get(position).caloriesBurned).toString());
     }
 
     @Override

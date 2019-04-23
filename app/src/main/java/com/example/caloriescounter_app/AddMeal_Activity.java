@@ -41,27 +41,51 @@ public class AddMeal_Activity extends AppCompatActivity {
                 SharedPreferences prefs = getSharedPreferences(
                         "com.example.caloriescounter_app", Context.MODE_PRIVATE);
                 int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
-                Meal meal = new Meal(nameText.getText().toString(), Converters.getCurrentDate(),
-                        userId, brandText.getText().toString(), servingSizeText.getText().toString(),
-                        Integer.parseInt(caloriesText.getText().toString()), Integer.parseInt(proteinText.getText().toString()),
-                        Integer.parseInt(fatText.getText().toString()), Integer.parseInt(carbsText.getText().toString()));
-                MealRepository mealRepository = new MealRepository(context);
 
-                mealRepository.insertTask(meal, new OnMealRepositoryActionListener() {
-                    @Override
-                    public void actionSucces() {
-                        Toast.makeText(context, "Meal added", Toast.LENGTH_SHORT).show();
+                if (nameText.getText().toString().isEmpty()) {
+                    nameText.setError("Input required!");
+                    nameText.requestFocus();
+                } else if (brandText.getText().toString().isEmpty()) {
+                    brandText.setError("Input required!");
+                    brandText.requestFocus();
+                } else if (servingSizeText.getText().toString().isEmpty()) {
+                    servingSizeText.setError("Input required");
+                    servingSizeText.requestFocus();
+                } else if (caloriesText.getText().toString().isEmpty()) {
+                    caloriesText.setError("Field required");
+                    caloriesText.requestFocus();
+                } else if (proteinText.getText().toString().isEmpty()) {
+                    proteinText.setError("Field required!");
+                    proteinText.requestFocus();
+                } else if (fatText.getText().toString().isEmpty()) {
+                    fatText.setError("Field required");
+                    fatText.requestFocus();
+                } else if (carbsText.getText().toString().isEmpty()) {
+                    carbsText.setError("Field required");
+                    carbsText.requestFocus();
+                } else {
 
-                        Intent intent = new Intent(context, Main_Activity.class);
-                        startActivity(intent);
-                    }
+                    Meal meal = new Meal(nameText.getText().toString(), Converters.getCurrentDate(),
+                            userId, brandText.getText().toString(), servingSizeText.getText().toString(),
+                            Integer.parseInt(caloriesText.getText().toString()), Integer.parseInt(proteinText.getText().toString()),
+                            Integer.parseInt(fatText.getText().toString()), Integer.parseInt(carbsText.getText().toString()));
+                    MealRepository mealRepository = new MealRepository(context);
 
-                    @Override
-                    public void actionFailed() {
-                        Toast.makeText(context, "Meal could not be added!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    mealRepository.insertTask(meal, new OnMealRepositoryActionListener() {
+                        @Override
+                        public void actionSucces() {
+                            Toast.makeText(context, "Meal added", Toast.LENGTH_SHORT).show();
 
+                            Intent intent = new Intent(context, Main_Activity.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void actionFailed() {
+                            Toast.makeText(context, "Meal could not be added!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
                 //how to pass information to second activity
                 //startIntent.putExtra("com.example.tutorial2.SOMETHING", "HELLO WORLD!");
             }

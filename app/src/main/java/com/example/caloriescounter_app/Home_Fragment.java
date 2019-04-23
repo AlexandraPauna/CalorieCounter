@@ -51,6 +51,8 @@ public class Home_Fragment extends Fragment {
             }
         });
 
+        //Button updateWeight = (Button) view.findViewById(R.id)
+
         return view;
     }
 

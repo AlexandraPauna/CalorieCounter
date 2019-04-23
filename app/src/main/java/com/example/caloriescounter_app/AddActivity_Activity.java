@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
@@ -34,17 +35,20 @@ public class AddActivity_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_add_activity);
 
         final Date currentTime = Calendar.getInstance().getTime();
-        final int userId = 1;
 
         final EditText activityName = findViewById(R.id.et_activity_name);
         final EditText duration = findViewById(R.id.et_duration);
         final EditText caloriesBurned = findViewById(R.id.et_cal_burned);
 
-        Button addActivity = findViewById(R.id.btn_add_activity);
+        Button addActivity = findViewById(R.id.btn_add_a);
         addActivity.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
+                SharedPreferences prefs = getSharedPreferences(
+                        "com.example.caloriescounter_app", Context.MODE_PRIVATE);
+                int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
+
                 if(activityName.getText().toString().isEmpty()){
                     activityName.setError("Field required");
                     activityName.requestFocus();
@@ -55,6 +59,7 @@ public class AddActivity_Activity extends AppCompatActivity {
                     caloriesBurned.setError("Field required");
                     caloriesBurned.requestFocus();
                 } else{
+
                     Activity activity = new Activity(activityName.getText().toString(), Converters.getCurrentDate(),
                                                 userId, Integer.parseInt(duration.getText().toString()),
                                                 Integer.parseInt(caloriesBurned.getText().toString())

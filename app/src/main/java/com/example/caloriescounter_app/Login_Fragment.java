@@ -38,13 +38,10 @@ public class Login_Fragment extends Fragment {
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Ceva");
                 onActivityFragmentCommunication.onReplaceFragment("Login");
 
             }
         });
-
-
 
         final EditText userName = view.findViewById(R.id.et_username);
         final EditText password = view.findViewById(R.id.et_password);
@@ -53,12 +50,7 @@ public class Login_Fragment extends Fragment {
         MainActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Atlceva");
                 UserRepository userRep = new UserRepository(getContext());
-                System.out.println("Hellooo");
-
-                    System.out.println("Username: " + userName.getText().toString());
-                    System.out.println("Password: " + password.getText().toString());
 
                     User user = userRep.getUser(userName.getText().toString(), password.getText().toString());
                     if (user != null) {
@@ -70,7 +62,6 @@ public class Login_Fragment extends Fragment {
                         Intent intent = new Intent(getActivity(), Main_Activity.class);
                         startActivity(intent);
                     } else {
-                        System.out.println("aaaaa");
                         Toast.makeText(getContext(), "User not found!", Toast.LENGTH_SHORT).show();
                     }
 

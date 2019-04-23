@@ -3,6 +3,7 @@ package com.example.caloriescounter_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -129,12 +130,16 @@ public class Register_Fragment extends Fragment {
                             Integer.parseInt(height.getText().toString()),
                             Float.parseFloat(weight.getText().toString()),
                             Float.parseFloat(goalWeight.getText().toString()), bmrulet);
-
+                    final int userIda = user.uid;
                     new UserRepository(getContext()).insertTask(user, new OnUserRepositoryActionListener() {
                         @Override
                         public void actionSucces() {
                             Toast.makeText(getContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
 
+                            SharedPreferences sharedPref = getActivity().getSharedPreferences("com.example.caloriescounter_app", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putInt("com.example.caloriescounter_app.userId", userIda);
+                            editor.apply();
                             Intent intent = new Intent(getActivity(), Main_Activity.class);
                             startActivity(intent);
                         }
