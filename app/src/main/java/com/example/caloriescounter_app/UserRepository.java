@@ -17,6 +17,10 @@ public class UserRepository {
         new InsertTask(listener).execute(user);
     }
 
+    public void updateTask(final User user, final OnUserRepositoryActionListener listener){
+        new UpdateTask(listener).execute(user);
+    }
+
 
     public User getUser(String userName, String password) {
         return appDatabase.userDao().getUser(userName, password);

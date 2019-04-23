@@ -51,7 +51,13 @@ public class Home_Fragment extends Fragment {
             }
         });
 
-        //Button updateWeight = (Button) view.findViewById(R.id)
+        Button updateWeight = (Button) view.findViewById(R.id.btn_update_weight);
+        updateWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return view;
     }
