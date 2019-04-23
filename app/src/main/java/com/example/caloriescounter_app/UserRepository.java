@@ -26,6 +26,14 @@ public class UserRepository {
         return appDatabase.userDao().getUser(userName, password);
     }
 
+    public float getWeight(int id) {
+        return appDatabase.userDao().getWeight(id);
+    }
+
+    public int getBmr(int id) {
+        return appDatabase.userDao().getBmr(id);
+    }
+
     public User getUserByNameString (String userName){
         return appDatabase.userDao().findByUserName(userName);
     }

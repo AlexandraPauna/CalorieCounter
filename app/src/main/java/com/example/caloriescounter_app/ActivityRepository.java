@@ -20,7 +20,7 @@ public class ActivityRepository {
         new ActivityInsertTask(listener).execute(activity);
     }
 
-    public List<Activity> getUserByNameString (int uid, String date){
+    public List<Activity> getActivities (int uid, String date){
         return appDatabase.activityDao().loadAllForUserByDate(uid, date);
     }
 

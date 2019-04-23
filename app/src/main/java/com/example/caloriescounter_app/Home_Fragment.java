@@ -23,14 +23,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.caloriescounter_app.database.Activity;
 import com.example.caloriescounter_app.database.Converters;
+import com.example.caloriescounter_app.database.Meal;
 import com.example.caloriescounter_app.database.User;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import org.w3c.dom.Text;
+
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -44,6 +49,8 @@ public class Home_Fragment extends Fragment {
 
     OnActivityFragmentCommunication onActivityFragmentCommunication;
 
+    ArrayList<Meal> meals = new ArrayList<Meal>();
+    ArrayList<Activity> activities = new ArrayList<Activity>();
     // Notification ID.
     private static final int NOTIFICATION_ID = 0;
     // Notification channel ID.
@@ -60,9 +67,37 @@ public class Home_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
+        SharedPreferences prefs = getActivity().getSharedPreferences(
+                "com.example.caloriescounter_app", Context.MODE_PRIVATE);
+        final int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
         TextView message = (TextView) view.findViewById(R.id.tv_date);
         message.setText("Today " + Converters.getCurrentDate());
+
+        TextView displayWeight = (TextView) view.findViewById(R.id.tv_display_weight);
+        displayWeight.setText(((Float)new UserRepository(getContext()).getWeight(userId)).toString());
+
+        TextView displayIntake = (TextView) view.findViewById(R.id.tv_cal_intake);
+        TextView displayBurned = (TextView) view.findViewById(R.id.tv_cal_burned);
+        TextView displayBalance = (TextView) view.findViewById(R.id.tv_cal_left);
+
+        meals = (ArrayList<Meal>) new MealRepository(getContext()).getMeals(userId, Converters.getCurrentDate());
+
+        int caloriesIntake = 0;
+        for(Meal meal: meals) {
+            caloriesIntake = caloriesIntake + meal.calories;
+        }
+        displayIntake.setText(((Integer) caloriesIntake).toString());
+
+        activities = (ArrayList<Activity>) new ActivityRepository(getContext()).getActivities(userId, Converters.getCurrentDate());
+        int caloriesBurned = 0;
+        for(Activity activity: activities) {
+            caloriesBurned = caloriesBurned + activity.caloriesBurned;
+        }
+        int bmr = (int) new UserRepository(getContext()).getBmr(userId);
+        displayBurned.setText(((Integer) caloriesBurned).toString());
+        displayBalance.setText(((Integer) (bmr-caloriesIntake+caloriesBurned)).toString());
 
         Button DisplayMealsBtn = (Button) view.findViewById(R.id.btn_meals);
         DisplayMealsBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +130,7 @@ public class Home_Fragment extends Fragment {
 
 
                 } else {
-                    SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
-                    SharedPreferences prefs = getActivity().getSharedPreferences(
-                            "com.example.caloriescounter_app", Context.MODE_PRIVATE);
-                    int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
                     User user = new UserRepository(getContext()).getUserById(userId);
 
                     int bmrulet = 0;

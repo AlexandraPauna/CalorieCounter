@@ -3,6 +3,7 @@ package com.example.caloriescounter_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.caloriescounter_app.database.Activity;
+import com.example.caloriescounter_app.database.Converters;
 
 import java.util.ArrayList;
 
@@ -55,7 +57,13 @@ public class Activities_Fragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        activities.addAll(new ApplicationController().getAppDatabase().activityDao().getAll());
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(
+                "com.example.caloriescounter_app", Context.MODE_PRIVATE);
+        int userId = prefs.getInt("com.example.caloriescounter_app.userId", 0);
+
+        activities = (ArrayList<Activity>) new ActivityRepository(getContext()).getActivities(userId, Converters.getCurrentDate());
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rec_view_activities);
