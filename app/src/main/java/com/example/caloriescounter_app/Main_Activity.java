@@ -41,6 +41,28 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
         fragmentTransaction.addToBackStack(backStateName);
         fragmentTransaction.commit();
 
+        ToggleButton alarmToggle = findViewById(R.id.alarmToggle);
+
+        alarmToggle.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton,
+                                                 boolean isChecked) {
+                        String toastMessage;
+                        if(isChecked){
+                            //Set the toast message for the "on" case.
+                            toastMessage = "Stand Up Alarm On!";
+                        } else {
+                            //Set the toast message for the "off" case.
+                            toastMessage = "Stand Up Alarm Off!";
+                        }
+
+                        Toast.makeText(Main_Activity.this, toastMessage,Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+
+
         mNotificationManager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
@@ -150,7 +172,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
         PendingIntent contentPendingIntent = PendingIntent.getActivity
                 (context, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                //.setSmallIcon(R.drawable.ic_stand_up)
+                .setSmallIcon(R.drawable.ic_assignment_late_black_24dp)
                 .setContentTitle("Stand Up Alert")
                 .setContentText("You should stand up and walk around now!")
                 .setContentIntent(contentPendingIntent)
