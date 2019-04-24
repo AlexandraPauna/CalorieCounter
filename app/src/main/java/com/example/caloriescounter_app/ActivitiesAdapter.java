@@ -30,9 +30,10 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public int getItemViewType(int position) {
         /*if (position % 2 == 0){
             return TYPE_GREEN;
-        }*/
+        }
 
-        return TYPE_PINK;
+        return TYPE_PINK;*/
+        return TYPE_GREEN;
     }
 
     @Override

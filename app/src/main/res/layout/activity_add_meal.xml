@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
     android:background="@color/colorBack"
     tools:context=".AddMeal_Activity">
 
@@ -86,6 +89,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_calories"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
@@ -104,6 +108,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_protein"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
@@ -122,6 +127,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_fat"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
@@ -140,6 +146,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_carbs"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />

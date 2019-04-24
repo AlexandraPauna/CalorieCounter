@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final int TYPE_PINK = 1;
+    private final int TYPE = 0;
 
     private ArrayList<Meal> items;
     private Context context;
@@ -24,12 +24,11 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.items = items;
     }
 
-    /*@Override
+    @Override
     public int getItemViewType(int position) {
 
-
-        return TYPE_PINK;
-    }*/
+        return TYPE;
+    }
 
 
     @Override

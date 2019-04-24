@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
     tools:context=".AddActivity_Activity"
     android:background="@color/colorBack">
 
@@ -50,6 +53,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_duration"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
@@ -68,6 +72,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_cal_burned"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
