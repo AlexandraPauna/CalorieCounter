@@ -83,6 +83,8 @@ public class Register_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                User userFound = new UserRepository(getContext()).getUserByNameString(userName.getText().toString());
+
                 String genulet = null;
                 int bmrulet = 0;
                 if (radioBtnFemale.isChecked()) {
@@ -123,6 +125,10 @@ public class Register_Fragment extends Fragment {
                     radioBtnFemale.setError("Selection Required");
                     radioBtnFemale.requestFocus();
                     radioBtnMale.requestFocus();
+                } else if (userFound != null) {
+                    userName.setError("UserName already exists!");
+                    userName.requestFocus();
+
                 } else {
                     System.out.println("Data curenta: " + Converters.getCurrentDate());
                     final User user = new User(userName.getText().toString(), password.getText().toString(),
