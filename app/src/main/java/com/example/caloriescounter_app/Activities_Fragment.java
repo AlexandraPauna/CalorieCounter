@@ -73,5 +73,5 @@ public class Activities_Fragment extends Fragment {
         recyclerView.setAdapter(activitiesAdapter);
 
     }
-
+//andreea commit
 }
