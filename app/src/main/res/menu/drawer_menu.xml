@@ -9,11 +9,11 @@
             android:icon="@drawable/ic_user"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_message"
+            android:id="@+id/nav_meal"
             android:icon="@drawable/ic_meal"
             android:title="Meal" />
         <item
-            android:id="@+id/nav_chat"
+            android:id="@+id/nav_activity"
             android:icon="@drawable/ic_activity"
             android:title="Activity" />
     </group>
