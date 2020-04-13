@@ -37,7 +37,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerMain,new Home_Fragment(),FRAGMENT_TAG);
+        fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
         String backStateName = Home_Fragment.class.getName();
         fragmentTransaction.addToBackStack(backStateName);
@@ -76,7 +76,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
     public void onReplaceFragment(String tag) {
         if(tag.equals("DisplayMeals")) { //replace Home_Fragment with Meals_Fragment
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainerMain,new Meals_Fragment(), FRAGMENT_TAG);
+            fragmentTransaction.replace(R.id.drawer_layout,new Meals_Fragment(), FRAGMENT_TAG);
             fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
             String backStateName = Home_Fragment.class.getName();
@@ -87,7 +87,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
 
         if(tag.equals("DisplayActivities")) { //replace Home_Fragment with Meals_Fragment
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainerMain,new Activities_Fragment(), FRAGMENT_TAG);
+            fragmentTransaction.replace(R.id.drawer_layout,new Activities_Fragment(), FRAGMENT_TAG);
             fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
             String backStateName = Home_Fragment.class.getName();
@@ -109,7 +109,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
             if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainerMain,new Home_Fragment(),FRAGMENT_TAG);
+                fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
                 fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 String backStateName = Home_Fragment.class.getName();
                 fragmentTransaction.addToBackStack(backStateName);

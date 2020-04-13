@@ -18,10 +18,21 @@
             android:enabled="true"
             android:exported="true"></receiver>
 
+        <activity
+            android:name=".Main_Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
         <activity android:name=".AddActivity_Activity" />
-        <activity android:name=".Main_Activity" />
+<!--        <activity android:name=".Main_Activity" />-->
         <activity android:name=".AddMeal_Activity" />
-        <activity android:name=".Welcome_Activity">
+        <activity android:name=".Welcome_Activity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
