@@ -62,7 +62,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
 //        }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
+        fragmentTransaction.replace(R.id.fragment_container,new Home_Fragment(),FRAGMENT_TAG);
         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
         String backStateName = Home_Fragment.class.getName();
         fragmentTransaction.addToBackStack(backStateName);
@@ -149,25 +149,28 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+        } else{
+            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
 
-            Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-            if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment) {
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
-                fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                String backStateName = Home_Fragment.class.getName();
-                fragmentTransaction.addToBackStack(backStateName);
-                fragmentTransaction.commit();
+                Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+                if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment) {
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
+                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    String backStateName = Home_Fragment.class.getName();
+                    fragmentTransaction.addToBackStack(backStateName);
+                    fragmentTransaction.commit();
+                }
+                else {
+                    //super.onBackPressed();
+                    finish();
+                }
             }
             else {
-                //super.onBackPressed();
                 finish();
             }
         }
+
     }
 
 
