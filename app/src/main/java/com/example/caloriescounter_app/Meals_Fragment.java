@@ -13,10 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.Meal;
@@ -79,6 +82,35 @@ public class Meals_Fragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mealsAdapter);
 
+        EditText editText = (EditText) view.findViewById(R.id.search_meal);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+
+    private void filter(String text){
+        ArrayList<Meal> filteredMeals = new ArrayList<Meal>();
+
+        for(Meal meal: meals){
+            if(meal.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredMeals.add(meal);
+            }
+        }
+        mealsAdapter.filterList(filteredMeals);
     }
 
 }

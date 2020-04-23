@@ -56,18 +56,23 @@ public class MealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView carbsTextView = ((ViewHolder)viewHolder).carbsText;
 
         nameTextView.setText(items.get(position).name);
-        brandTextView.setText(items.get(position).brand);
-        servingSizeTextView.setText(items.get(position).servingSize);
-        caloriesTextView.setText(((Integer)items.get(position).calories).toString());
-        proteinTextView.setText(((Integer)items.get(position).protein).toString());
-        fatTextView.setText(((Integer)items.get(position).fat).toString());
-        carbsTextView.setText(((Integer)items.get(position).carbs).toString());
+        brandTextView.setText("Brand: " + items.get(position).brand);
+        servingSizeTextView.setText("Portion: " + items.get(position).servingSize);
+        caloriesTextView.setText(((Integer)items.get(position).calories).toString() + " cal");
+        proteinTextView.setText("Protein: " + ((Integer)items.get(position).protein).toString());
+        fatTextView.setText("Fat: " + ((Integer)items.get(position).fat).toString());
+        carbsTextView.setText("Carbs: " + ((Integer)items.get(position).carbs).toString());
 
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void filterList(ArrayList<Meal> filteredList){
+        items = filteredList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

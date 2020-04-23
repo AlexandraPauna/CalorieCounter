@@ -12,13 +12,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.caloriescounter_app.database.Activity;
 import com.example.caloriescounter_app.database.Converters;
+import com.example.caloriescounter_app.database.Meal;
 
 import java.util.ArrayList;
 
@@ -67,11 +71,42 @@ public class Activities_Fragment extends Fragment {
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rec_view_activities);
+        recyclerView.setHasFixedSize(true);
         activitiesAdapter = new ActivitiesAdapter(getContext(), activities);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(activitiesAdapter);
+        layoutManager.setSmoothScrollbarEnabled (true);
 
+        EditText editText = (EditText) view.findViewById(R.id.search_activity);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+
+    private void filter(String text){
+        ArrayList<Activity> filteredMeals = new ArrayList<Activity>();
+
+        for(Activity activity: activities){
+            if(activity.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredMeals.add(activity);
+            }
+        }
+        activitiesAdapter.filterList(filteredMeals);
     }
 
 }

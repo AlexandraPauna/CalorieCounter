@@ -33,4 +33,8 @@ public class Activity {
         this.duration = duration;
         this.caloriesBurned = caloriesBurned;
     }
+
+    public String getName() {
+        return name;
+    }
 }

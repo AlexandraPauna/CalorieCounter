@@ -49,4 +49,8 @@ public class Meal {
         this.fat = fat;
         this.carbs = carbs;
     }
+
+    public String getName() {
+        return name;
+    }
 }

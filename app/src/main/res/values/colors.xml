@@ -8,4 +8,6 @@
     <color name="textColor">#ffffff</color>
     <color name="colorHint">#546E7A</color>
     <color name="buttonColorPink">#c42b65</color>
+    <color name="colorList">#3e525c</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -57,13 +57,18 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TextView calBurnedTextView = ((ViewHolder)viewHolder).calBurnedTextView;
 
         nameTextView.setText(items.get(position).name);
-        durationTextView.setText(((Integer)items.get(position).duration).toString());
-        calBurnedTextView.setText(((Integer)items.get(position).caloriesBurned).toString());
+        durationTextView.setText(((Integer)items.get(position).duration).toString() + " min");
+        calBurnedTextView.setText(((Integer)items.get(position).caloriesBurned).toString() + " cal burned");
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void filterList(ArrayList<Activity> filteredList){
+        items = filteredList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
