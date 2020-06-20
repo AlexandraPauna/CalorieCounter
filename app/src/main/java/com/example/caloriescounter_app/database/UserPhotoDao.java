@@ -11,4 +11,7 @@ public interface UserPhotoDao {
 
     @Query("SELECT image FROM UserPhoto WHERE user_id = :id")
     String getImage(int id);
+
+    @Query("UPDATE UserPhoto SET image = :newImage  WHERE user_id = :userId")
+    void updateUserPhotoImage(int userId, String newImage);
 }
