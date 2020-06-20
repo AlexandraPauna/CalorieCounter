@@ -1,9 +1,13 @@
 package com.example.caloriescounter_app;
 
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,6 +15,8 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -41,6 +47,8 @@ import java.io.IOException;
  */
 public class Register_Fragment extends Fragment {
 
+    private int STORAGE_PERMISSION_CODE = 1;
+
     OnActivityFragmentCommunication onActivityFragmentCommunication;
 
     public Register_Fragment() {
@@ -51,6 +59,14 @@ public class Register_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register_, container, false);
+
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED){
+            requestStoragePermission();
+        } else {  // Permission has already been granted
+            Toast.makeText(getContext(), "You have already granted storage permission!",
+                    Toast.LENGTH_SHORT).show();
+        }
 
         Button BackToLoginBtn = (Button) view.findViewById(R.id.btn_back_login);
         BackToLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -190,6 +206,32 @@ public class Register_Fragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnActivityFragmentCommunication) {
             onActivityFragmentCommunication = (OnActivityFragmentCommunication) context;
+        }
+    }
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle("Permission needed")
+                    .setMessage("External storage permission is needed because the profile image needs to be stored!")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(getActivity(),
+                                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
         }
     }
 
