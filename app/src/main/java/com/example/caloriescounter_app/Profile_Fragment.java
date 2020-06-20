@@ -54,7 +54,7 @@ public class Profile_Fragment extends Fragment {
         ChangePhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onActivityFragmentCommunication.onReplaceFragment("DisplayMeals");
+                //TO DO
 
             }
         });
@@ -63,7 +63,7 @@ public class Profile_Fragment extends Fragment {
         SharePhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onActivityFragmentCommunication.onReplaceFragment("DisplayActivities");
+                //TO DO
 
             }
         });
