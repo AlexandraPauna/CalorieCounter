@@ -21,20 +21,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.User;
 import com.example.caloriescounter_app.database.UserPhoto;
+import com.example.caloriescounter_app.repository.user.OnUserRepositoryActionListener;
+import com.example.caloriescounter_app.repository.user.UserRepository;
+import com.example.caloriescounter_app.repository.userPhoto.OnUserPhotoRepositoryActionListener;
+import com.example.caloriescounter_app.repository.userPhoto.UserPhotoRepository;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 
 /**

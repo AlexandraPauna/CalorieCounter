@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.caloriescounter_app.database.User;
+import com.example.caloriescounter_app.repository.user.UserRepository;
 
 
 /**

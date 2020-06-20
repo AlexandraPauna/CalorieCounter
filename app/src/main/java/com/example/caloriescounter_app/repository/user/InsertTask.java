@@ -1,7 +1,8 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.user;
 
 import android.os.AsyncTask;
 
+import com.example.caloriescounter_app.ApplicationController;
 import com.example.caloriescounter_app.database.User;
 
 public class InsertTask extends AsyncTask<User, Void, Void> {

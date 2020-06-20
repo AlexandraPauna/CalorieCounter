@@ -1,13 +1,11 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.meal;
 
 import android.content.Context;
 
+import com.example.caloriescounter_app.ApplicationController;
 import com.example.caloriescounter_app.database.AppDatabase;
 import com.example.caloriescounter_app.database.Meal;
-import com.example.caloriescounter_app.database.User;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MealRepository {

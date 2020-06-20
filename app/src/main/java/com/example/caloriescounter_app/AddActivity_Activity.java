@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.caloriescounter_app.database.Activity;
 import com.example.caloriescounter_app.database.Converters;
+import com.example.caloriescounter_app.repository.activity.ActivityRepository;
+import com.example.caloriescounter_app.repository.activity.OnActivityRepositoryActionListener;
 
 import java.util.Calendar;
 import java.util.Date;

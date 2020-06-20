@@ -22,7 +22,7 @@ import android.widget.EditText;
 
 import com.example.caloriescounter_app.database.Activity;
 import com.example.caloriescounter_app.database.Converters;
-import com.example.caloriescounter_app.database.Meal;
+import com.example.caloriescounter_app.repository.activity.ActivityRepository;
 
 import java.util.ArrayList;
 

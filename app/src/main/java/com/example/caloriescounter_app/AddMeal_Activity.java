@@ -9,13 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.Meal;
-
-import java.util.Calendar;
+import com.example.caloriescounter_app.repository.meal.MealRepository;
+import com.example.caloriescounter_app.repository.meal.OnMealRepositoryActionListener;
 
 public class AddMeal_Activity extends AppCompatActivity {
 

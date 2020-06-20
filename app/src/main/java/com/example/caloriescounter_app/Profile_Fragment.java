@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.caloriescounter_app.repository.user.UserRepository;
+import com.example.caloriescounter_app.repository.userPhoto.UserPhotoRepository;
+
 import java.io.File;
-import java.text.DecimalFormat;
 
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;

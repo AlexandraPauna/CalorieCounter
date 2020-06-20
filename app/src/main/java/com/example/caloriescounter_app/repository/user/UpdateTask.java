@@ -1,8 +1,10 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.user;
 
 import android.os.AsyncTask;
 
+import com.example.caloriescounter_app.ApplicationController;
 import com.example.caloriescounter_app.database.User;
+import com.example.caloriescounter_app.repository.user.OnUserRepositoryActionListener;
 
 public class UpdateTask extends AsyncTask<User, Void, Void> {
     OnUserRepositoryActionListener listener;

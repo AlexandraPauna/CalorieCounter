@@ -1,4 +1,4 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.meal;
 
 public interface OnMealRepositoryActionListener {
     void actionSucces();

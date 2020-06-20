@@ -1,9 +1,12 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.userPhoto;
 
 import android.content.Context;
 
+import com.example.caloriescounter_app.ApplicationController;
 import com.example.caloriescounter_app.database.AppDatabase;
 import com.example.caloriescounter_app.database.UserPhoto;
+import com.example.caloriescounter_app.repository.userPhoto.OnUserPhotoRepositoryActionListener;
+import com.example.caloriescounter_app.repository.userPhoto.UserPhotoInsertTask;
 
 public class UserPhotoRepository {
     private AppDatabase appDatabase;

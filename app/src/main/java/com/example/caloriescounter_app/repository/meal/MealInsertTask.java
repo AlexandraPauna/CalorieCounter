@@ -1,9 +1,9 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.meal;
 
 import android.os.AsyncTask;
 
+import com.example.caloriescounter_app.ApplicationController;
 import com.example.caloriescounter_app.database.Meal;
-import com.example.caloriescounter_app.database.User;
 
 public class MealInsertTask extends AsyncTask<Meal, Void, Void> {
     OnMealRepositoryActionListener listener;

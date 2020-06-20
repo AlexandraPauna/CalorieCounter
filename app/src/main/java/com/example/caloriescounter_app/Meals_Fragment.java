@@ -1,7 +1,6 @@
 package com.example.caloriescounter_app;
 
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,9 +22,9 @@ import android.widget.EditText;
 
 import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.Meal;
+import com.example.caloriescounter_app.repository.meal.MealRepository;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 
 /**

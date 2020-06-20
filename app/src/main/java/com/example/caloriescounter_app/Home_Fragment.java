@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.SystemClock;
@@ -27,16 +26,15 @@ import com.example.caloriescounter_app.database.Activity;
 import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.Meal;
 import com.example.caloriescounter_app.database.User;
+import com.example.caloriescounter_app.repository.activity.ActivityRepository;
+import com.example.caloriescounter_app.repository.meal.MealRepository;
+import com.example.caloriescounter_app.repository.user.OnUserRepositoryActionListener;
+import com.example.caloriescounter_app.repository.user.UserRepository;
+
 import android.widget.CompoundButton;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.NOTIFICATION_SERVICE;

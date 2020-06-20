@@ -1,8 +1,10 @@
-package com.example.caloriescounter_app;
+package com.example.caloriescounter_app.repository.userPhoto;
 
 import android.os.AsyncTask;
 
+import com.example.caloriescounter_app.ApplicationController;
 import com.example.caloriescounter_app.database.UserPhoto;
+import com.example.caloriescounter_app.repository.userPhoto.OnUserPhotoRepositoryActionListener;
 
 public class UserPhotoInsertTask extends AsyncTask<UserPhoto, Void, Void> {
     OnUserPhotoRepositoryActionListener listener;
