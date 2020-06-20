@@ -121,6 +121,15 @@ public class Home_Fragment extends Fragment {
             }
         });
 
+        Button DisplayProfileBtn = (Button) view.findViewById(R.id.btn_profile);
+        DisplayProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onActivityFragmentCommunication.onReplaceFragment("DisplayProfile");
+
+            }
+        });
+
         String goal = ((Float)new UserRepository(getContext()).getGoalWeight(userId)).toString();
 
         final EditText weightNew = view.findViewById(R.id.et_new_weight);

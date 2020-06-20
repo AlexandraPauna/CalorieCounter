@@ -45,4 +45,13 @@ public interface UserDao {
 
     @Query("SELECT bmr FROM user WHERE uid = :id")
     int getBmr(int id);
+
+    @Query("SELECT age FROM user WHERE uid = :id")
+    int getAge(int id);
+
+    @Query("SELECT gender FROM user WHERE uid = :id")
+    String getGender(int id);
+
+    @Query("SELECT height FROM user WHERE uid = :id")
+    int getHeight(int id);
 }

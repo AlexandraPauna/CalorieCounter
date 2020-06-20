@@ -121,6 +121,17 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
 
             fragmentTransaction.commit();
         }
+
+        if(tag.equals("DisplayProfile")) { //replace Home_Fragment with Profile_Fragment
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.drawer_layout,new Profile_Fragment(), FRAGMENT_TAG);
+            fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+            String backStateName = Home_Fragment.class.getName();
+            fragmentTransaction.addToBackStack(backStateName);
+
+            fragmentTransaction.commit();
+        }
     }
 
     @Override

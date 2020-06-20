@@ -4,10 +4,17 @@ package com.example.caloriescounter_app;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +26,11 @@ import android.widget.Toast;
 
 import com.example.caloriescounter_app.database.Converters;
 import com.example.caloriescounter_app.database.User;
+import com.example.caloriescounter_app.database.UserPhoto;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -150,19 +161,27 @@ public class Register_Fragment extends Fragment {
                             editor.apply();
                             Intent intent = new Intent(getActivity(), Main_Activity.class);
 
+                            //save default photo
+                            Drawable myDrawable = getResources().getDrawable(R.drawable.no_profile);
+                            Bitmap anImage      = ((BitmapDrawable) myDrawable).getBitmap();
+                            try {
+                                saveImageToExternal("userPhoto", anImage, getContext(), userAdded.uid);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
                             startActivity(intent);
                         }
 
                         @Override
                         public void actionFailed() {
-                            Toast.makeText(getContext(), "User could not be aded!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "User could not be added!", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
 
             }
         });
-
 
         return view;
     }
@@ -172,6 +191,49 @@ public class Register_Fragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnActivityFragmentCommunication) {
             onActivityFragmentCommunication = (OnActivityFragmentCommunication) context;
+        }
+    }
+
+    public void saveImageToExternal(String imgName, Bitmap bm, Context context, int uid) throws IOException {
+        //Create Path to save Image
+        String appFolderName = "Calorie_Counter";
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES + File.separator + appFolderName);
+        //Creates app specific folder
+        path.mkdirs();
+        File imageFile = new File(path, imgName+".png"); // Imagename.png
+        FileOutputStream out = new FileOutputStream(imageFile);
+        try{
+            bm.compress(Bitmap.CompressFormat.PNG, 100, out); // Compress Image
+
+            //addPhotoToDatabase();
+            String filePath = imageFile.getAbsolutePath();
+            final UserPhoto userPhoto = new UserPhoto(uid, filePath);
+
+            new UserPhotoRepository(getContext()).insertTask(userPhoto, new OnUserPhotoRepositoryActionListener() {
+                        @Override
+                        public void actionSucces() {
+                            Toast.makeText(getContext(), "Successfully default photo added", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void actionFailed() {
+                            Toast.makeText(getContext(), "Default photo could not be added!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            out.flush();
+            out.close();
+
+            // Tell the media scanner about the new file so that it is
+            // immediately available to the user.
+            MediaScannerConnection.scanFile(context,new String[] { imageFile.getAbsolutePath() }, null,new MediaScannerConnection.OnScanCompletedListener() {
+                public void onScanCompleted(String path, Uri uri) {
+                    Log.i("ExternalStorage", "Scanned " + path + ":");
+                    Log.i("ExternalStorage", "-> uri=" + uri);
+                }
+            });
+        } catch(Exception e) {
+            throw new IOException();
         }
     }
 

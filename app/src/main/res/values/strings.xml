@@ -52,4 +52,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="my_image_description">Profile Image</string>
+    <string name="btn_change_photo">Change photo</string>
+    <string name="btn_share_photo">Share Photo</string>
+    <string name="btn_profile">Go To Profile</string>
 </resources>

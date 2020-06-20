@@ -46,6 +46,12 @@ public class UserRepository {
         return appDatabase.userDao().getUserById(id);
     }
 
+    public int getAge(int id) { return appDatabase.userDao().getAge(id); }
+
+    public String getGender(int id) { return appDatabase.userDao().getGender(id); }
+
+    public int getHeight(int id) { return appDatabase.userDao().getHeight(id); }
+
     /*public void deleteTask(final User user,
                            final OnUserRepositoryActionListener listener){
         new DeleteTask(listener).execute(user);
