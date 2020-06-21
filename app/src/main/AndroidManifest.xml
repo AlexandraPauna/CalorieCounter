@@ -5,6 +5,7 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
@@ -43,6 +44,7 @@
         <activity android:name=".AddActivity_Activity" />
 <!--        <activity android:name=".Main_Activity" />-->
         <activity android:name=".AddMeal_Activity" />
+        <activity android:name=".Profile_Activity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Welcome_Activity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
