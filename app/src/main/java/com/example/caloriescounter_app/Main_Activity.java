@@ -150,6 +150,14 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Activities_Fragment()).commit();
                 break;
+            case R.id.nav_user:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Profile_Fragment()).commit();
+                break;
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Home_Fragment()).commit();
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -164,7 +172,8 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
 
                 Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-                if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment) {
+                if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment
+                        || fragment instanceof Profile_Fragment) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
