@@ -11,7 +11,7 @@
                 />
 
             <solid
-                android:color="@color/buttonColor"
+                android:color="@color/buttonColorPink"
                 />
 
         </shape>

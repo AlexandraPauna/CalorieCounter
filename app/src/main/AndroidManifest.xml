@@ -5,7 +5,11 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
 
     <application
@@ -43,6 +47,7 @@
         <activity android:name=".AddActivity_Activity" />
 <!--        <activity android:name=".Main_Activity" />-->
         <activity android:name=".AddMeal_Activity" />
+        <activity android:name=".Profile_Activity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Welcome_Activity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

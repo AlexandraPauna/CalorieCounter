@@ -114,14 +114,23 @@ public class Register_Fragment extends Fragment {
                 String genulet = null;
                 int bmrulet = 0;
                 if (radioBtnFemale.isChecked()) {
+                    radioBtnFemale.setError(null);
+                    radioBtnMale.setError(null);
                     genulet = "female";
-                    bmrulet = (int) (655 + 9 * Float.parseFloat(weight.getText().toString()) +
-                            1 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+                    if(!weight.getText().toString().isEmpty() && !height.getText().toString().isEmpty()
+                        && !age.getText().toString().isEmpty()){
+                        bmrulet = (int) (655 + 9 * Float.parseFloat(weight.getText().toString()) +
+                                1 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+                    }
                 } else if (radioBtnMale.isChecked()) {
-                    bmrulet = (int) (66 + 13 * Float.parseFloat(weight.getText().toString()) +
-                            5 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+                    radioBtnFemale.setError(null);
+                    radioBtnMale.setError(null);
                     genulet = "male";
-
+                    if(!weight.getText().toString().isEmpty() && !height.getText().toString().isEmpty()
+                            && !age.getText().toString().isEmpty()){
+                        bmrulet = (int) (66 + 13 * Float.parseFloat(weight.getText().toString()) +
+                                5 * Integer.parseInt(height.getText().toString()) - Integer.parseInt(age.getText().toString()));
+                    }
                 }
                 if (userName.getText().toString().isEmpty()) {
                     userName.setError("Field required");
@@ -129,28 +138,23 @@ public class Register_Fragment extends Fragment {
                 } else if (password.getText().toString().isEmpty()) {
                     password.setError("Field required");
                     password.requestFocus();
-
+                }  else if (genulet == null) {
+                    radioBtnFemale.setError("Selection Required");
+                    radioBtnFemale.requestFocus();
+                    radioBtnMale.setError("Select Item");//Set error to last Radio button
+                    radioBtnMale.requestFocus();
                 } else if (age.getText().toString().isEmpty()) {
                     age.setError("Field required");
                     age.requestFocus();
-
                 } else if (height.getText().toString().isEmpty()) {
                     height.setError("Field required");
                     height.requestFocus();
-
                 } else if (weight.getText().toString().isEmpty()) {
                     weight.setError("Field required");
                     weight.requestFocus();
-
                 } else if (goalWeight.getText().toString().isEmpty()) {
                     goalWeight.setError("Field required");
                     goalWeight.requestFocus();
-
-                } else if (genulet == null) {
-                    radioBtnMale.setError("Selection Required");
-                    radioBtnFemale.setError("Selection Required");
-                    radioBtnFemale.requestFocus();
-                    radioBtnMale.requestFocus();
                 } else if (userFound != null) {
                     userName.setError("UserName already exists!");
                     userName.requestFocus();
