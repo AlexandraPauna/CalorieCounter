@@ -22,4 +22,6 @@ public class UserPhotoRepository {
 
     public String getImage(int user_id) { return appDatabase.userPhotoDao().getImage(user_id); }
 
+    public void updateTask(final UserPhoto userPhoto, final OnUserPhotoRepositoryActionListener listener) {new UserPhotoUpdateTask(listener).execute(userPhoto);};
+
 }
