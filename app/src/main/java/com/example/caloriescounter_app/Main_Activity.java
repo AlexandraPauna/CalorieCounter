@@ -8,10 +8,10 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlarmManager;
-import android.app.FragmentManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -34,7 +34,7 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
 
     private static final String FRAGMENT_TAG = "FRAGMENT_TAG";
     private DrawerLayout drawer;
-
+    Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,22 +141,38 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        String backStateName;
         switch (item.getItemId()) {
+            case R.id.nav_home:
+                fragmentTransaction.replace(R.id.fragment_container,
+                        new Home_Fragment());
+                fragmentTransaction.replace(R.id.fragment_container,
+                        new Home_Fragment(), FRAGMENT_TAG);
+                backStateName = Home_Fragment.class.getName();
+                fragmentTransaction.addToBackStack(backStateName);
+                fragmentTransaction.commit();
+                break;
             case R.id.nav_meal:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Meals_Fragment()).commit();
+                fragmentTransaction.replace(R.id.fragment_container,
+                        new Meals_Fragment(), FRAGMENT_TAG);
+                backStateName = Meals_Fragment.class.getName();
+                fragmentTransaction.addToBackStack(backStateName);
+                fragmentTransaction.commit();
                 break;
             case R.id.nav_activity:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Activities_Fragment()).commit();
+                fragmentTransaction.replace(R.id.fragment_container,
+                        new Activities_Fragment(), FRAGMENT_TAG);
+                backStateName = Activities_Fragment.class.getName();
+                fragmentTransaction.addToBackStack(backStateName);
+                fragmentTransaction.commit();
                 break;
             case R.id.nav_user:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Profile_Fragment()).commit();
-                break;
-            case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Home_Fragment()).commit();
+                fragmentTransaction.replace(R.id.fragment_container,
+                        new Profile_Fragment(), FRAGMENT_TAG);
+                backStateName = Profile_Fragment.class.getName();
+                fragmentTransaction.addToBackStack(backStateName);
+                fragmentTransaction.commit();
                 break;
         }
 
@@ -170,27 +186,58 @@ public class Main_Activity extends AppCompatActivity implements OnActivityFragme
             drawer.closeDrawer(GravityCompat.START);
         } else{
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-
                 Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-                if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment
-                        || fragment instanceof Profile_Fragment) {
-                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    String backStateName = Home_Fragment.class.getName();
-                    fragmentTransaction.addToBackStack(backStateName);
-                    fragmentTransaction.commit();
-                }
-                else {
-                    //super.onBackPressed();
+                if (fragment instanceof Home_Fragment) {
+                    super.onBackPressed();
                     finish();
                 }
+                else {
+                    showHome();
+                }
+//                if (fragment instanceof Meals_Fragment || fragment instanceof  Activities_Fragment
+//                        || fragment instanceof Profile_Fragment) {
+//                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                    fragmentTransaction.replace(R.id.drawer_layout,new Home_Fragment(),FRAGMENT_TAG);
+//                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//                    String backStateName = Home_Fragment.class.getName();
+//                    fragmentTransaction.addToBackStack(backStateName);
+//                    fragmentTransaction.commit();
+//                }
+//                else {
+//                    //super.onBackPressed();
+//                    finish();
+//                }
             }
             else {
                 finish();
             }
         }
 
+    }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
+
+
+    private void showHome(){
+//        FragmentManager manager = getSupportFragmentManager();
+//        manager.beginTransaction().replace(R.id.fragment_container,
+//                new Home_Fragment()).commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        String backStateName;
+        fragmentTransaction.replace(R.id.fragment_container,
+                new Home_Fragment());
+        fragmentTransaction.replace(R.id.fragment_container,
+                new Home_Fragment(), FRAGMENT_TAG);
+        backStateName = Home_Fragment.class.getName();
+        fragmentTransaction.addToBackStack(backStateName);
+        fragmentTransaction.commit();
     }
 
 
