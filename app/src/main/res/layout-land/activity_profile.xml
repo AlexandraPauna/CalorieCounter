@@ -30,7 +30,8 @@
         app:layout_constraintLeft_toRightOf="@id/profile_image"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/save_image_btn"
-        android:background="@color/buttonColorPink"
+        android:background="@color/buttonColor"
+        android:textColor="@color/textColor"
         android:text="Capture Image" />
 
     <Button
@@ -42,6 +43,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/buttonColorPink"
+        android:textColor="@color/textColor"
         android:text="Save Image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
