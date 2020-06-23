@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimaryDark"
-    android:gravity="center_horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBack"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="32dp"
+    tools:context=".Profile_Activity">
 
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="220dp"
         android:layout_height="223dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/capture_image_btn"/>
 
     <Button
         android:id="@+id/capture_image_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/buttonColorPink"
-        android:text="Capture Image" />
+        android:background="@color/buttonColor"
+        android:text="Capture Image"
+        app:layout_constraintTop_toBottomOf="@id/profile_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/save_image_btn"/>
 
     <Button
         android:id="@+id/save_image_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/buttonColorPink"
-        android:text="Save Image" />
+        android:text="Save Image"
+        app:layout_constraintTop_toBottomOf="@id/capture_image_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
