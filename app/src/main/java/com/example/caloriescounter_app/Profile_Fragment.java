@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,13 @@ public class Profile_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TO DO
+                try {
+                    Intent intent = new Intent(getActivity(), Profile_Activity.class);
+                    startActivity(intent);
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
 
             }
         });

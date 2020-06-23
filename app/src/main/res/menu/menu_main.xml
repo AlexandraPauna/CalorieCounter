@@ -6,10 +6,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-        <item
-            android:id="@+id/action_user"
-            android:orderInCategory="1"
-            android:title="User"
-            app:showAsAction="ifRoom" />
-
 </menu>
