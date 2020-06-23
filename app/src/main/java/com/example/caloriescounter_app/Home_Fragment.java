@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +35,10 @@ import com.example.caloriescounter_app.repository.user.UserRepository;
 
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
+import android.widget.VideoView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -101,32 +106,42 @@ public class Home_Fragment extends Fragment {
         displayBurned.setText("Burned: " + ((Integer) caloriesBurned).toString());
         displayBalance.setText("Calories left: " + ((Integer) (bmr-caloriesIntake+caloriesBurned)).toString());
 
-        Button DisplayMealsBtn = (Button) view.findViewById(R.id.btn_meals);
-        DisplayMealsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onActivityFragmentCommunication.onReplaceFragment("DisplayMeals");
+//        Button DisplayMealsBtn = (Button) view.findViewById(R.id.btn_meals);
+//        DisplayMealsBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onActivityFragmentCommunication.onReplaceFragment("DisplayMeals");
+//
+//            }
+//        });
+//
+//        Button DisplayActivitiesBtn = (Button) view.findViewById(R.id.btn_activities);
+//        DisplayActivitiesBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onActivityFragmentCommunication.onReplaceFragment("DisplayActivities");
+//
+//            }
+//        });
+//
+//        Button DisplayProfileBtn = (Button) view.findViewById(R.id.btn_profile);
+//        DisplayProfileBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onActivityFragmentCommunication.onReplaceFragment("DisplayProfile");
+//
+//            }
+//        });
 
-            }
-        });
 
-        Button DisplayActivitiesBtn = (Button) view.findViewById(R.id.btn_activities);
-        DisplayActivitiesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onActivityFragmentCommunication.onReplaceFragment("DisplayActivities");
-
-            }
-        });
-
-        Button DisplayProfileBtn = (Button) view.findViewById(R.id.btn_profile);
-        DisplayProfileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onActivityFragmentCommunication.onReplaceFragment("DisplayProfile");
-
-            }
-        });
+        VideoView videoView  = view.findViewById(R.id.vv_exerciseVideo);
+        String videoPath = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.videoplayback;
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        MediaController mediaController = new MediaController(getContext());
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        videoView.start();
 
         String goal = ((Float)new UserRepository(getContext()).getGoalWeight(userId)).toString();
 
