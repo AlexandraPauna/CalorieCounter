@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:text="@string/info"
         android:textColor="@color/textColor"
-
-
+        app:layout_constraintBottom_toTopOf="@id/til_username"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,17 +28,15 @@
         android:layout_height="wrap_content"
         android:hint="@string/username"
         android:textColorHint="@color/colorHint"
-        android:layout_marginTop="350px"
-        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_birthday"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/til_password"
-        app:layout_constraintTop_toTopOf="@id/tv_info"
+        app:layout_constraintTop_toBottomOf="@id/tv_info"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_username"
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,8 +47,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:textColorHint="@color/colorHint"
-        android:layout_marginTop="300px"
-        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_birthday"
         app:layout_constraintLeft_toRightOf="@id/til_username"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_info">
@@ -59,72 +55,41 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="match_parent"
             android:inputType="textPassword"
             android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tv_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_gender"
-        android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/rg_gender"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/til_username" />
-
-    <RadioGroup
-        android:id="@+id/rg_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/tv_gender">
-
-        <RadioButton
-            android:id="@+id/radio_female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rb_female"
-            android:textColor="@color/textColor" />
-
-        <RadioButton
-            android:id="@+id/radio_male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rb_male"
-            android:textColor="@color/textColor"
-            app:layout_constraintBottom_toTopOf="@id/tv_birthday"
-            app:layout_constraintLeft_toRightOf="@id/radio_female"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_gender" />
-    </RadioGroup>
-
-
-    <TextView
         android:id="@+id/tv_birthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250px"
         android:text="@string/tv_birthday"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@id/til_birthday"
-        app:layout_constraintLeft_toRightOf="@id/rg_gender"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_height"
-        app:layout_constraintTop_toBottomOf="@id/til_password" />
+        app:layout_constraintTop_toBottomOf="@id/til_username" />
 
     <TextView
         android:id="@+id/tv_height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40px"
         android:text="@string/tv_height"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/til_birthday"
+        app:layout_constraintBottom_toTopOf="@id/til_height"
         app:layout_constraintLeft_toRightOf="@id/tv_birthday"
+        app:layout_constraintRight_toLeftOf="@id/tv_weight"
+        app:layout_constraintTop_toBottomOf="@id/til_password" />
+
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_weight"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@id/til_height"
+        app:layout_constraintLeft_toRightOf="@id/tv_height"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
@@ -134,8 +99,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_birthday"
         android:textColorHint="@color/colorHint"
-        app:layout_constraintBottom_toTopOf="@id/tv_weight"
-        app:layout_constraintLeft_toRightOf="@id/rg_gender"
+        app:layout_constraintBottom_toTopOf="@id/tv_goal_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/til_height"
         app:layout_constraintTop_toBottomOf="@id/tv_birthday">
 
@@ -147,17 +112,15 @@
             android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_height"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="@string/hint_height"
         android:textColorHint="@color/colorHint"
-        android:layout_marginTop="100px"
         app:layout_constraintBottom_toTopOf="@id/tv_goal_weight"
         app:layout_constraintLeft_toRightOf="@id/til_birthday"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/til_weight"
         app:layout_constraintTop_toBottomOf="@id/tv_height">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -168,40 +131,15 @@
             android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/tv_weight"
-        android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/til_weight"
-        app:layout_constraintLeft_toRightOf="@id/rg_gender"
-        app:layout_constraintRight_toLeftOf="@id/tv_goal_weight"
-        app:layout_constraintTop_toBottomOf="@id/til_birthday" />
-
-    <TextView
-        android:id="@+id/tv_goal_weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/tv_goal_weight"
-        android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/til_goal_weight"
-        app:layout_constraintLeft_toRightOf="@id/tv_weight"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_height" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_weight"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:hint="@string/hint_weight"
         android:textColorHint="@color/colorHint"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/rg_gender"
-        app:layout_constraintRight_toLeftOf="@id/til_goal_weight"
+        app:layout_constraintBottom_toTopOf="@id/tv_goal_weight"
+        app:layout_constraintLeft_toRightOf="@id/til_height"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_weight">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -212,17 +150,37 @@
             android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_goal_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_goal_weight"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@id/til_goal_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_gender"
+        app:layout_constraintTop_toBottomOf="@id/til_birthday" />
+
+    <TextView
+        android:id="@+id/tv_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_gender"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@id/til_goal_weight"
+        app:layout_constraintLeft_toRightOf="@id/tv_goal_weight"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_birthday" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_goal_weight"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:hint="@string/hint_goal_weight"
         android:textColorHint="@color/colorHint"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/til_weight"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_up"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/rg_gender"
         app:layout_constraintTop_toBottomOf="@id/tv_goal_weight">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -232,6 +190,34 @@
             android:layout_height="match_parent"
             android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <RadioGroup
+        android:id="@+id/rg_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btn_back_login"
+        app:layout_constraintLeft_toRightOf="@id/til_goal_weight"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_goal_weight">
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_female"
+            android:textColor="@color/textColor"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_male"
+            android:textColor="@color/textColor"
+            />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/btn_sign_up"
@@ -247,14 +233,15 @@
 
     <Button
         android:id="@+id/btn_back_login"
-        android:layout_width="320dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@color/buttonColorPink"
         android:text="@string/btn_bk_login"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toRightOf="@id/btn_sign_up"
-        app:layout_constraintTop_toBottomOf="@id/til_goal_weight" />
+        app:layout_constraintLeft_toRightOf="@id/btn_sign_up"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_goal_weight"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
