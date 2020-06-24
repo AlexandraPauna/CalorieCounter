@@ -1,6 +1,7 @@
 package com.example.caloriescounter_app;
 
 
+import android.animation.ObjectAnimator;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +63,9 @@ public class Home_Fragment extends Fragment {
             "primary_notification_channel";
     private NotificationManager mNotificationManager;
 
+    ImageView clockImageView;
+    ObjectAnimator objectAnimator;
+
     public Home_Fragment() {
         // Required empty public constructor
     }
@@ -69,7 +74,7 @@ public class Home_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
@@ -210,6 +215,9 @@ public class Home_Fragment extends Fragment {
         final AlarmManager alarmManager = (AlarmManager) getContext().getSystemService
                 (ALARM_SERVICE);
 
+        clockImageView = (ImageView) view.findViewById(R.id.image_clock);
+        objectAnimator = ObjectAnimator.ofFloat(clockImageView, "rotation", 360);
+
         // Set the click listener for the toggle button.
         alarmToggle.setOnCheckedChangeListener
                 (new CompoundButton.OnCheckedChangeListener() {
@@ -218,6 +226,9 @@ public class Home_Fragment extends Fragment {
                             (CompoundButton buttonView, boolean isChecked) {
                         String toastMessage;
                         if (isChecked) {
+
+                            objectAnimator.setDuration(1000);
+                            objectAnimator.start();
 
                             long repeatInterval = 10*1000;
 
