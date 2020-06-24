@@ -24,7 +24,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_activity_name"
-        android:layout_width="0dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:hint="@string/hint_name"
         android:textColorHint="@color/colorHint"
@@ -42,7 +42,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_duration"
-        android:layout_width="0dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:hint="@string/hint_duration"
         android:textColorHint="@color/colorHint"
@@ -61,7 +61,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_cal_burned"
-        android:layout_width="0dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:hint="@string/hint_calories_burned"
         android:textColorHint="@color/colorHint"
@@ -80,7 +80,7 @@
 
     <Button
         android:id="@+id/btn_add_a"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:background="@color/buttonColor"
         android:text="@string/btn_add"

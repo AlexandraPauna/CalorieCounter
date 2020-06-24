@@ -21,7 +21,6 @@
         app:layout_constraintRight_toLeftOf="@id/btn_change_photo"
         app:layout_constraintBottom_toTopOf="@id/tv_bmi"
         />
-<!--    android:src="@drawable/no_profile"-->
 
     <Button
         android:id="@+id/btn_change_photo"
@@ -42,75 +41,81 @@
         android:background="@color/buttonColorPink"
         android:text="@string/btn_share_photo"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/tv_user_gender"
+        app:layout_constraintBottom_toTopOf="@id/tv_bmi"
         app:layout_constraintLeft_toRightOf="@id/iv_user_image"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_change_photo" />
 
     <TextView
         android:id="@+id/tv_bmi"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="BMI:"
+        android:layout_marginStart="50dp"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/tv_user_birthday"
+        app:layout_constraintBottom_toTopOf="@id/tv_user_height"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_user_gender"
         app:layout_constraintTop_toBottomOf="@id/iv_user_image" />
 
     <TextView
         android:id="@+id/tv_user_gender"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_gender"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/tv_user_height"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_user_weight"
         app:layout_constraintLeft_toRightOf="@id/tv_bmi"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_user_birthday"
         app:layout_constraintTop_toBottomOf="@id/iv_user_image" />
 
     <TextView
         android:id="@+id/tv_user_birthday"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_birthday"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/tv_user_weight"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tv_user_height"
-        app:layout_constraintTop_toBottomOf="@id/tv_bmi" />
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_user_goal_weight"
+        app:layout_constraintLeft_toRightOf="@id/tv_user_gender"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_user_image" />
 
     <TextView
         android:id="@+id/tv_user_height"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_height"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toTopOf="@id/tv_user_goal_weight"
-        app:layout_constraintLeft_toRightOf="@id/tv_user_birthday"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_gender" />
+        android:layout_marginStart="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_user_weight"
+        app:layout_constraintTop_toBottomOf="@id/tv_bmi" />
 
     <TextView
         android:id="@+id/tv_user_weight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_weight"
         android:textColor="@color/textColor"
+        android:layout_marginStart="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tv_user_height"
         app:layout_constraintRight_toLeftOf="@id/tv_user_goal_weight"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_birthday" />
+        app:layout_constraintTop_toBottomOf="@id/tv_user_gender" />
 
     <TextView
         android:id="@+id/tv_user_goal_weight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_goal_weight"
         android:textColor="@color/textColor"
+        android:layout_marginStart="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/tv_user_weight"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_height" />
+        app:layout_constraintTop_toBottomOf="@id/tv_user_birthday" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
